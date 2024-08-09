@@ -1,9 +1,9 @@
 <x-app-layout>
 
-    @guest
     {{-- @include('components.modal-danger') --}}
-    <x-modal-danger :message="$message" :btnMessage="$btnMessage" :route="route('register')" />
-    @endguest
+    @if (!Auth::user() or !request()->user()->hasVerifiedEmail())
+    <x-modal-danger :message="$message" :btnMessage="$btnMessage" :route="$route" />
+    @endif
 
     <div class="bg-[#f2f7fe] flex justify-center items-start flex-wrap gap-5 p-6">
         <div class="flex flex-col items-center bg-white p-4 rounded-2xl w-[350px]">
@@ -12,15 +12,17 @@
                     alt="defaultPhoto" />
             </div>
             <h1 class="text-[#114FA9] text-center font-bold text-[40px] mt-5 leading-[40px]">
-                John Doe
+                {{$user->name ?? "John Doe"}}
             </h1>
             <p class="text-lg tracking-wide font-[600] text-center">
                 Fullstack Web Developer
+                {{-- {{$user->position ?? "-"}} --}}
             </p>
 
             <p class="mt-5 text-center">
                 Saya merupakan fullstack web developer, saya bisa frontend maupun
                 backend dalam membuat website
+                {{-- {{$user->name ?? "John Doe"}} --}}
             </p>
 
             <div class="w-full my-6">

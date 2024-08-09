@@ -29,7 +29,11 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // absolute: false
-        return redirect()->intended(route('home'));
+        if (request()->user()->hasVerifiedEmail()) {
+            return redirect()->intended(route('home'));
+        } else {
+            return redirect()->intended(route('verification.notice'));
+        }
     }
 
     /**
