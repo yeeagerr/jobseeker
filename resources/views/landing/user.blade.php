@@ -100,6 +100,13 @@
 
     <section class="flex justify-evenly flex-wrap items-center mt-5">
         @include('components.cardJob-1')
+        @include('components.cardJob-1')
+        @include('components.cardJob-1')
+        @include('components.cardJob-1')
+        @include('components.cardJob-1')
+        @include('components.cardJob-1')
+        @include('components.cardJob-1')
+
 
     </section>
 

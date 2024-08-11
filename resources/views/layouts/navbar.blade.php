@@ -8,7 +8,9 @@
             class="font-[500] hover:border-b border-[rgb(45,156,219)] tracking-wider whitespace-nowrap {{request()->is('company') ? "
             border-b-2" : "" }}">Company
             Profile</a>
-        <a href="" class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap">Search Job</a>
+        <a href="{{route('job')}}"
+            class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('job') ? "
+            border-b-2" : "" }}">Search Job</a>
         <a href="{{route('profile')}}"
             class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap">My Profile</a>
     </div>
@@ -70,7 +72,7 @@
             <a href="{{route('home')}}"
                 class="text-xl font-[600] tracking-wide pb-1 border-[#2D9CDB] border-b-2">Home</a>
             <a href="{{route('company')}}" class="text-xl font-[600] tracking-wide pb-1">Company Profile</a>
-            <a href="" class="text-xl font-[600] tracking-wide pb-1">Search Job</a>
+            <a href="{{route('job')}}" class="text-xl font-[600] tracking-wide pb-1">Search Job</a>
             @auth
             <a href="{{route('profile')}}" class="text-xl font-[600] tracking-wide pb-1">My Profile</a>
             @endauth

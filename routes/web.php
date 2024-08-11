@@ -3,12 +3,14 @@
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfilesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/company', [CompanyController::class, 'index'])->name('company');
 Route::get("/profile", [ProfilesController::class, 'index'])->name('profile');
+Route::get("/job", [JobController::class, 'index'])->name('job');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
