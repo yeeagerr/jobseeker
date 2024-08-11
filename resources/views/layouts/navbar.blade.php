@@ -36,7 +36,7 @@
                 <img src="./images/chuuni cover.jpg" class="w-full h-full object-cover" alt="profile" />
             </div>
             <p class="font-[600] ml-2 w-[150px] truncate">
-                Muhammad Habib Abdillah
+                {{Auth::user()->name}}
             </p>
         </div>
         @endauth

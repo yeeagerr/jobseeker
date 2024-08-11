@@ -1,7 +1,7 @@
 <x-app-layout>
 
     {{-- @include('components.modal-danger') --}}
-    @if (!Auth::user() or !request()->user()->hasVerifiedEmail())
+    @if (!Auth::user())
     <x-modal-danger :message="$message" :btnMessage="$btnMessage" :route="$route" />
     @endif
 

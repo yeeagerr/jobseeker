@@ -23,6 +23,14 @@
 </head>
 
 <body class="{{request()->is('/') ? "" : " bg-[#f2f7fd]"}}">
+    @if (Auth::user() and !request()->user()->hasVerifiedEmail() )
+    @php
+    $message = "Kamu harus verifikasi email kamu telebih dahulu, Silahkan cek gmail kamu yang telah di registrasi";
+    $btnMessage = "Kembali";
+    $route = route('verification.notice');
+    @endphp
+    <x-modal-danger :message="$message" :btnMessage="$btnMessage" :route="$route" />
+    @endif
     <div class="min-h-screen ">
 
         {{-- @auth
