@@ -1,4 +1,4 @@
-<nav class="sticky top-0 z-[2] flex items-center px-5 justify-between h-[90px] rounded-bl-2xl rounded-br-2xl bg-white">
+<nav class="sticky top-0 z-[10] flex items-center px-5 justify-between h-[90px] rounded-bl-2xl rounded-br-2xl bg-white">
     <h1 class="text-2xl font-bold tracking-wider">JOB SEEKER</h1>
 
     <div class="items-center gap-7 hidden lg:flex">
@@ -70,9 +70,14 @@
         <div
             class="absolute left-0 h-0 overflow-hidden top-[90px] flex peer-checked:py-5 peer-checked:h-[200px] transition-all gap-3 justify-center bg-white peer-checked:border-t-2 items-center flex-col w-full z-10">
             <a href="{{route('home')}}"
-                class="text-xl font-[600] tracking-wide pb-1 border-[#2D9CDB] border-b-2">Home</a>
-            <a href="{{route('company')}}" class="text-xl font-[600] tracking-wide pb-1">Company Profile</a>
-            <a href="{{route('job')}}" class="text-xl font-[600] tracking-wide pb-1">Search Job</a>
+                class="text-xl font-[600] tracking-wide pb-1 border-[#2D9CDB] {{request()->is('/') ? " border-b-2" : ""
+                }}">Home</a>
+            <a href="{{route('company')}}"
+                class="text-xl font-[600] tracking-wide pb-1 border-[#2D9CDB] {{request()->is('company') ? " border-b-2"
+                : "" }}">Company Profile</a>
+            <a href="{{route('job')}}"
+                class="text-xl font-[600] tracking-wide pb-1  border-[#2D9CDB] {{request()->is('job') ? " border-b-2"
+                : "" }}">Search Job</a>
             @auth
             <a href="{{route('profile')}}" class="text-xl font-[600] tracking-wide pb-1">My Profile</a>
             @endauth

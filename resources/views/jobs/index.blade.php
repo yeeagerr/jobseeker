@@ -35,12 +35,20 @@
         <div class="flex-[300px] md:border-l-2 md:pl-5 flex-col items-center justify-center">
             <div class="flex justify-between">
                 <p class="font-bold tracking-wider">Jangkauan Gaji</p>
-                <p class="font-bold tracking-wider">Rp. 1jt - Rp. 10jt</p>
+                <p class="font-bold tracking-wider">Rp. <span id="ammount">1</span>jt - Rp. 10jt</p>
             </div>
-            <input type="range"
+            <input type="range" id="rangeRp"
                 class="w-full appearance-none [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:bg-[#7384C5] [&::-webkit-slider-thumb]:w-[13px] [&::-webkit-slider-thumb]:h-[13px] [&::-webkit-slider-thumb]:rounded-full bg-[#D3E1F6] rounded-full h-[5px] cursor-pointer"
-                step="1" max="10" value="0" />
+                step="1" min="1" max="10" value="0" />
         </div>
+
+        <script>
+            const amount = document.getElementById("ammount");
+            const range = document.getElementById("rangeRp");
+            range.addEventListener("change", () => {
+                ammount.innerHTML = range.value;
+            });
+        </script>
     </form>
 
     <main class="flex mt-8">
