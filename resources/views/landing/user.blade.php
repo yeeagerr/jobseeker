@@ -1,6 +1,6 @@
 <x-app-layout>
     <header class="bg-[#F2F7FD] h-[500px] md:h-[100vh]">
-        <div class="relative flex flex-col justify-between h-[100vh]">
+        <div class="relative flex flex-col justify-between h-full">
             <img draggable="false" src="./images/wave-tail-resp.png" alt="wavelineres"
                 class="relative top-[-70px] h-[100vh] object-cover w-full md:hidden" />
 
