@@ -1,4 +1,7 @@
-<x-app-layout>
+<x-app-layout title="Job List">
+    <x-slot name="title"> Seek Jobs </x-slot>
+
+
     <form class="px-5 py-8 flex gap-5 items-center border-[#C0D3F1] border-t-[3px] bg-white w-full flex-wrap">
         <div class="flex relative flex-[200px] border-r-2">
             <div class="h-[50px] flex justify-center items-center w-[50px] bg-[#CEDEF7] rounded-full">

@@ -1,4 +1,4 @@
-<div class="w-full h-[100vh] top-0 bg-black bg-opacity-50 flex justify-center items-center fixed z-[10]">
+<div class="w-full h-[100vh] top-0 bg-black bg-opacity-50 flex justify-center items-center fixed z-[12]">
     <div class="bg-white w-[90%] md:w-[600px] rounded-xl flex flex-col items-center">
         <div class="bg-[#f63e32] w-[80px] h-[80px] mt-[-40px] flex justify-center items-center rounded-full">
             <i class="fa-solid fa-x text-3xl text-white"></i>

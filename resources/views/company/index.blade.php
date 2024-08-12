@@ -1,4 +1,6 @@
 <x-app-layout>
+    <x-slot name="title"> Company Seeker </x-slot>
+
     <header
         class="bg-[#22336A] items-center relative md:static min-h-[350px] mx-7 mb-5 rounded-2xl flex justify-between">
         <div class="ml-9 flex-[300px] mr-10 relative z-[2] md:z-0 md:static">

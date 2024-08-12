@@ -24,9 +24,13 @@
         <p class="mt-2">4.0 total rating from 213 reviews</p>
     </div>
 
-    <div class="flex justify-end">
+    <div class="flex justify-between items-center mt-4">
+        <div>
+            <p class=" font-bold text-sm">Rp 5jt / Hari</p>
+            <p class="text-[gray] text-sm w-[165px] truncate">Vitka, Pombensin Tiban</p>
+        </div>
         <button
-            class="hover:bg-[#4567D6] border-2 hover:text-white transition mt-4 border-[#4567D6] px-3 py-1 font-bold tracking-wider rounded-xl">
+            class="hover:bg-[#4567D6] border-2 hover:text-white transition border-[#4567D6] px-3 py-1 font-bold tracking-wider rounded-xl">
             See More
         </button>
     </div>

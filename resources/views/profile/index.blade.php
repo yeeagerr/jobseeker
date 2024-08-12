@@ -1,4 +1,5 @@
 <x-app-layout>
+    <x-slot name="title"> Profile </x-slot>
 
     {{-- @include('components.modal-danger') --}}
     @if (!Auth::user())
@@ -104,6 +105,7 @@
                             totam.
                         </p>
                     </div>
+
 
                     <!--  -->
                 </div>

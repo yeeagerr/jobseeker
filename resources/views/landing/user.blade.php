@@ -1,4 +1,6 @@
 <x-app-layout>
+    <x-slot name="title"> Homepage </x-slot>
+
     <header class="bg-[#F2F7FD] h-[500px] md:h-[100vh]">
         <div class="relative flex flex-col justify-between h-full">
             <img draggable="false" src="./images/wave-tail-resp.png" alt="wavelineres"
@@ -99,6 +101,7 @@
     </p>
 
     <section class="flex justify-evenly flex-wrap items-center mt-5">
+        @include('components.cardJob-1')
         @include('components.cardJob-1')
         @include('components.cardJob-1')
         @include('components.cardJob-1')
