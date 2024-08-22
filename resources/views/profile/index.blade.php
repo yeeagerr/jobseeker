@@ -27,22 +27,15 @@
             <div class="w-full my-6">
                 <p class="font-bold text-xl tracking-wider block">Skills</p>
                 <div class="flex gap-2 flex-wrap mt-2">
+
+                    @foreach ($user->skills ?? [] as $skill)
                     <div
                         class="py-1 cursor-default transform hover:bg-[#4567D6] hover:text-white transition px-4 border-[#4567D6] border-2 rounded-2xl">
-                        Java
+                        {{$skill}}
+
                     </div>
-                    <div
-                        class="py-1 cursor-default transform hover:bg-[#4567D6] hover:text-white transition px-4 border-[#4567D6] border-2 rounded-2xl">
-                        Javascript
-                    </div>
-                    <div
-                        class="py-1 cursor-default transform hover:bg-[#4567D6] hover:text-white transition px-4 border-[#4567D6] border-2 rounded-2xl">
-                        Javascript
-                    </div>
-                    <div
-                        class="py-1 cursor-default transform hover:bg-[#4567D6] hover:text-white transition px-4 border-[#4567D6] border-2 rounded-2xl">
-                        Javascript
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
 
@@ -65,8 +58,7 @@
                 {{$user->email ?? "-"}}
             </p>
             <p class="font-bold text-sm md:text-xl mt-2">
-                <span class="text-[gray] tracking-wide">Alamat</span> : Bengkong Baru,
-                Cartel
+                <span class="text-[gray] tracking-wide">Alamat</span> : {{$user->alamat ?? "-"}}
             </p>
             <p class="font-bold text-sm md:text-xl mt-2">
                 <span class="text-[gray] tracking-wide">Nomor Handphone</span> :
@@ -81,7 +73,7 @@
             <div class="flex mt-4 relative overflow-hidden">
                 <div class="absolute left-[118px] top-[35px] h-full bg-[#4567D6] w-[5px] rounded-full"></div>
 
-                <div>
+                <div class="w-full">
                     <div class="flex">
                         <p class="w-[100px]"></p>
                         <div
@@ -91,19 +83,26 @@
                     </div>
 
                     <!-- TIMELINE PER YEAR -->
-                    <div class="flex relative items-center z-1 mt-[10px]">
-                        <p class="w-[110.5px] overflow-hidden text-center text-[gray] font-bold">
-                            2020-2021
+
+                    {{-- @foreach ($user->pengalaman as $i)
+                    {{dd($i)}}
+                    @endforeach --}}
+                    @foreach ($user->pengalaman ?? [] as $i)
+                    <div class="flex relative items-center z-1 mt-[10px] w-full ">
+                        <p class="w-[110.5px]  overflow-hidden text-center text-[gray] font-bold">
+                            {{$i[0]}}
                         </p>
                         <div class="w-[20px] h-[20px] flex justify-center items-center text-xl bg-black rounded-full">
                         </div>
-                        <p class="md:w-[70%] w-[150px] ml-2">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-                            id animi quam ut, ipsum voluptates quasi nulla porro ex vero?
-                            Iste sint enim eligendi vitae corrupti voluptate aliquam quo
-                            totam.
-                        </p>
+                        <div class="md:w-[70%]  w-[300px] ml-2 ">
+                            <h1 class="block font-bold text-2xl"> {{$i[1]}}
+                            </h1>
+                            <p>
+                                {{$i[2]}}
+                            </p>
+                        </div>
                     </div>
+                    @endforeach
 
 
                     <!--  -->

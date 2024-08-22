@@ -19,9 +19,11 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->json('skills')->nullable();
             $table->integer('age')->nullable();
-            $table->integer('nohp')->nullable();
+            $table->string('nohp')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string("alamat")->nullable();
+            $table->json('pengalaman')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

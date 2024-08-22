@@ -28,6 +28,7 @@ document.getElementById("addSkill").addEventListener("click", () => {
         "relative w-[95%] text-center text-black cursor-default outline-none bg-transparent";
     inputElement.placeholder = skill;
     inputElement.value = skill;
+    inputElement.name = "skills[]";
 
     divElement.appendChild(inputElement);
     divElement.appendChild(cancelBtn);
@@ -42,6 +43,8 @@ document.getElementById("addSkill").addEventListener("click", () => {
                 const container = document.getElementById(
                     `skill${h.target.id}`
                 );
+                console.log(h.target.id);
+
                 if (!container) {
                     return;
                 }
@@ -51,7 +54,27 @@ document.getElementById("addSkill").addEventListener("click", () => {
     } else {
         document.querySelector(".cancelbtn").addEventListener("click", (h) => {
             const container = document.getElementById(`skill${h.target.id}`);
+            console.log(h.target.id);
             container.remove();
         });
     }
 });
+
+if (document.querySelectorAll(".cancelbtn").length >= 2) {
+    document.querySelectorAll(".cancelbtn").forEach((e) => {
+        e.addEventListener("click", (h) => {
+            const container = document.getElementById(`skill${h.target.id}`);
+
+            if (!container) {
+                return;
+            }
+            container.remove();
+        });
+    });
+} else {
+    document.querySelector(".cancelbtn").addEventListener("click", (h) => {
+        const container = document.getElementById(`skill${h.target.id}`);
+
+        container.remove();
+    });
+}

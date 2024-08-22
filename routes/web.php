@@ -19,7 +19,7 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile/edit', [ProfilesController::class, 'show_edit'])->name('profile.edit');
     Route::get('/profileBreeze', [ProfileController::class, 'edit']);
-    Route::patch('/profileBreeze', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profileBreeze', [ProfilesController::class, 'update'])->name('profile.update');
     Route::delete('/profileBreeze', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

@@ -25,6 +25,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'age',
         'nohp',
         'position',
+        'alamat',
+        'pengalaman'
+    ];
+
+    protected $casts = [
+        'skills' => 'array',
+        'pengalaman' => 'array'
     ];
 
     /**
