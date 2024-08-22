@@ -16,14 +16,12 @@
                 {{$user->name ?? "John Doe"}}
             </h1>
             <p class="text-lg tracking-wide font-[600] text-center">
-                Fullstack Web Developer
-                {{-- {{$user->position ?? "-"}} --}}
+                {{-- Fullstack Web Developer --}}
+                {{$user->position ?? "-"}}
             </p>
 
             <p class="mt-5 text-center">
-                Saya merupakan fullstack web developer, saya bisa frontend maupun
-                backend dalam membuat website
-                {{-- {{$user->name ?? "John Doe"}} --}}
+                {{$user->description ?? "-"}}
             </p>
 
             <div class="w-full my-6">
@@ -48,22 +46,23 @@
                 </div>
             </div>
 
-            <button class="bg-[#4A3AFF] py-3 w-[90%] rounded-[35px] text-white">
+            <button onclick="window.location.href ='{{route('profile.edit')}}'"
+                class="bg-[#4A3AFF] py-3 w-[90%] rounded-[35px] text-white">
                 Edit Profile Kamu
             </button>
         </div>
 
-        <div class="bg-white flex-[500px] p-4 rounded-2xl bg-white">
+        <div class="bg-white flex-[500px] p-4 rounded-2xl ">
             <h1 class="text-[#114FA9] block text-3xl font-[700] tracking-wider">
                 Personal Information
             </h1>
 
             <p class="font-bold text-sm md:text-xl mt-3">
-                <span class="text-[gray] tracking-wide">Umur</span> : 17 Tahun
+                <span class="text-[gray] tracking-wide">Umur</span> : {{$user->age ?? "-"}} Tahun
             </p>
             <p class="font-bold text-sm md:text-xl mt-2">
                 <span class="text-[gray] tracking-wide">Email</span> :
-                TeblakPedesLvl5@gmail.com
+                {{$user->email ?? "-"}}
             </p>
             <p class="font-bold text-sm md:text-xl mt-2">
                 <span class="text-[gray] tracking-wide">Alamat</span> : Bengkong Baru,
@@ -71,7 +70,7 @@
             </p>
             <p class="font-bold text-sm md:text-xl mt-2">
                 <span class="text-[gray] tracking-wide">Nomor Handphone</span> :
-                085611919029019
+                {{$user->nohp ?? "-"}}
             </p>
 
             <div class="flex justify-between gap-3 items-center mt-7">

@@ -5,54 +5,55 @@
         <a href="{{route('home')}}" class="font-[500] tracking-wider whitespace-nowrap {{request()->is('/') ? "
             border-b-2" : "" }} border-[#2D9CDB]">Home</a>
         <a href="{{route('company')}}"
-            class="font-[500] hover:border-b border-[rgb(45,156,219)] tracking-wider whitespace-nowrap {{request()->is('company') ? "
+            class="font-[500] hover:border-b border-[rgb(45,156,219)] tracking-wider whitespace-nowrap {{request()->is('company*') ? "
             border-b-2" : "" }}">Company
             Profile</a>
         <a href="{{route('job')}}"
-            class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('job') ? "
+            class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('job*') ? "
             border-b-2" : "" }}">Search Job</a>
         <a href="{{route('profile')}}"
-            class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap">My Profile</a>
+            class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('profile*') ? "
+            border-b-2" : "" }} ">My Profile</a>
     </div>
 
-    <div class="items-center hidden lg:flex">
+    <div class=" items-center hidden lg:flex">
 
-        @auth
-        <form action="{{route('logout')}}" method="POST">
-            @csrf
-            <button type="submit"> <i
-                    class="fa-solid fa-right-from-bracket text-xl px-2 cursor-pointer border-r border-black text-black"></i>
-            </button>
-        </form>
-        @endauth
-        @guest
-        <i class="fa-solid fa-message text-xl text-black px-2 cursor-pointer border-r border-black"></i>
-        @endguest
-        <i class="fa-solid fa-bell text-xl text-black px-2 cursor-pointer border-r border-black"></i>
+            @auth
+            <form action="{{route('logout')}}" method="POST">
+                @csrf
+                <button type="submit"> <i
+                        class="fa-solid fa-right-from-bracket text-xl px-2 cursor-pointer border-r border-black text-black"></i>
+                </button>
+            </form>
+            @endauth
+            @guest
+            <i class="fa-solid fa-message text-xl text-black px-2 cursor-pointer border-r border-black"></i>
+            @endguest
+            <i class="fa-solid fa-bell text-xl text-black px-2 cursor-pointer border-r border-black"></i>
 
 
-        @auth
-        <div class="flex items-center ml-4 cursor-pointer pr-2 border-r border-black"
-            onclick="window.location.href='{{route('profile')}}'">
-            <div class="w-[35px] h-[35px] rounded-[100%] overflow-hidden">
-                <img src="./images/chuuni cover.jpg" class="w-full h-full object-cover" alt="profile" />
+            @auth
+            <div class="flex items-center ml-4 cursor-pointer pr-2 border-r border-black"
+                onclick="window.location.href='{{route('profile')}}'">
+                <div class="w-[35px] h-[35px] rounded-[100%] overflow-hidden">
+                    <img src="{{asset('/images/chuuni cover.jpg')}}" class="w-full h-full object-cover" alt="profile" />
+                </div>
+                <p class="font-[600] ml-2 w-[150px] truncate">
+                    {{Auth::user()->name}}
+                </p>
             </div>
-            <p class="font-[600] ml-2 w-[150px] truncate">
-                {{Auth::user()->name}}
-            </p>
-        </div>
-        @endauth
+            @endauth
 
-        <button class="bg-[#2D9CDB] text-white ml-4 px-4 py-2 rounded-2xl tracking-wider hover:bg-black transition">
-            Sebagai Perusahaan
-        </button>
+            <button class="bg-[#2D9CDB] text-white ml-4 px-4 py-2 rounded-2xl tracking-wider hover:bg-black transition">
+                Sebagai Perusahaan
+            </button>
 
-        @guest
-        <button onclick="window.location.href='{{route('login')}}'"
-            class="bg-[#4A3AFF] text-white ml-4 px-4 py-2 rounded-2xl tracking-wider hover:bg-black transition">
-            Login
-        </button>
-        @endguest
+            @guest
+            <button onclick="window.location.href='{{route('login')}}'"
+                class="bg-[#4A3AFF] text-white ml-4 px-4 py-2 rounded-2xl tracking-wider hover:bg-black transition">
+                Login
+            </button>
+            @endguest
     </div>
 
     <!-- RESPONSIVE -->

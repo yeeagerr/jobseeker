@@ -32,4 +32,10 @@ class ProfilesController extends Controller
             'route' => $route
         ]);
     }
+
+    public function show_edit()
+    {
+        $user = Auth::user();
+        return view('profile.edit-profile', compact('user'));
+    }
 }

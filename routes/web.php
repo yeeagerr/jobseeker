@@ -17,7 +17,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/profileBreeze', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/edit', [ProfilesController::class, 'show_edit'])->name('profile.edit');
+    Route::get('/profileBreeze', [ProfileController::class, 'edit']);
     Route::patch('/profileBreeze', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profileBreeze', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
