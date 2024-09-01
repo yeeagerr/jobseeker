@@ -26,7 +26,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'nohp',
         'position',
         'alamat',
-        'pengalaman'
+        'pengalaman',
+        'foto'
     ];
 
     protected $casts = [

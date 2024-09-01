@@ -1,13 +1,27 @@
 <x-app-layout>
     <main class="flex mt-5 justify-center items-center">
-        <div class="w-[65rem] p-3 bg-white rounded-2xl">
+        <div class="w-[65rem] p-0 sm:p-3 bg-white rounded-2xl">
             <h1 class="font-[700] text-2xl tracking-wider mb-5">
                 Edit Profile Description
             </h1>
 
-            <form action="{{route('profile.update')}}" method="POST">
+            <form action="{{route('profile.update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
+
+                <p class="font-bold ml-3 text-lg">Foto Profil</p>
+                <div class="flex items-center flex-wrap gap-2 mb-3">
+                    <div class="bg-[#4A3AFF] w-[160px] h-[45px] rounded-[25px] shadow-lg">
+                        <label for="filebanner" class="text-white flex justify-center items-center w-full h-full">Upload
+                            Foto</label>
+                        <input value="<?= $user->profile ?>" accept=".jpg,.png,.jpeg,.webp,.gif" type="file"
+                            name="profil" id="filebanner" class="hidden" />
+                    </div>
+                    <p id="bannerText" class="w-[220px] cursor-pointer truncate">
+                        <?= $user->foto ?? 'No file choosen' ?>
+                    </p>
+                </div>
+
                 <div>
                     <label for="nama" class="font-bold ml-3 text-lg">Nama</label>
                     <div class="shadow border flex px-3 items-center justify-between rounded-[50px] w-full h-[55px]">
@@ -48,7 +62,7 @@
                     </div>
 
                     <p class="font-bold ml-3 text-lg mt-2">Keahlian yang ditambah</p>
-                    <div class="flex items-center gap-3" id="skillTambah">
+                    <div class="flex items-center gap-3 flex-wrap" id="skillTambah">
                         @foreach ($user->skills ?? [] as $skill)
                         <div class=" relative h-[45px] w-[150px] flex items-center font-bold border-2 shadow-2xl mt-2 rounded-[50px] bg-[#F4F5F6]"
                             id="skill<?= $skill ?>"><input type="text" readonly="true"
@@ -137,4 +151,13 @@
             </form>
         </div>
     </main>
+
+    <script>
+        document.getElementById("filebanner").addEventListener("change", (e) => {
+      document.getElementById("bannerText").innerHTML =
+        e.target.files[0]["name"];
+    });
+
+
+    </script>
 </x-app-layout>

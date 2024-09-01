@@ -1,8 +1,25 @@
 <nav class="sticky top-0 z-[10] flex items-center px-5 justify-between h-[90px] rounded-bl-2xl rounded-br-2xl bg-white">
-    <h1 class="text-2xl font-bold tracking-wider">JOB SEEKER</h1>
-
+    <div class="flex-col">
+        <h1 class="text-2xl font-bold tracking-wider">JOB SEEKER</h1>
+        @if (Auth::guard('company')->check() ?? "")
+        <h1 class="text-2xl font-bold tracking-wider text-[#7384C5]">
+            COMPANY EDITION
+        </h1>
+        @endif
+    </div>
+    {{-- {{dd(Auth::guard('company')->check())}} --}}
     <div class="items-center gap-7 hidden lg:flex">
+        @if (Auth::guard('company')->check())
         <a href="{{route('home')}}" class="font-[500] tracking-wider whitespace-nowrap {{request()->is('/') ? "
+            border-b-2" : "" }} border-[#2D9CDB]">Home</a>
+        <a href="{{route('company')}}"
+            class="font-[500] hover:border-b border-[rgb(45,156,219)] tracking-wider whitespace-nowrap {{request()->is('company*') ? "
+            border-b-2" : "" }}">Rekrut</a>
+        <a href="{{route('profile')}}"
+            class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('profile*') ? "
+            border-b-2" : "" }} ">Company Profile</a>
+      @else
+      <a href=" {{route('home')}}" class="font-[500] tracking-wider whitespace-nowrap {{request()->is('/') ? "
             border-b-2" : "" }} border-[#2D9CDB]">Home</a>
         <a href="{{route('company')}}"
             class="font-[500] hover:border-b border-[rgb(45,156,219)] tracking-wider whitespace-nowrap {{request()->is('company*') ? "
@@ -14,46 +31,59 @@
         <a href="{{route('profile')}}"
             class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('profile*') ? "
             border-b-2" : "" }} ">My Profile</a>
+      @endif
     </div>
 
     <div class=" items-center hidden lg:flex">
 
-            @auth
+            @if (Auth::guard('company')->check() OR Auth::check())
             <form action="{{route('logout')}}" method="POST">
                 @csrf
                 <button type="submit"> <i
                         class="fa-solid fa-right-from-bracket text-xl px-2 cursor-pointer border-r border-black text-black"></i>
                 </button>
             </form>
-            @endauth
-            @guest
+            @else
             <i class="fa-solid fa-message text-xl text-black px-2 cursor-pointer border-r border-black"></i>
-            @endguest
+            @endif
+
             <i class="fa-solid fa-bell text-xl text-black px-2 cursor-pointer border-r border-black"></i>
+            {{-- {{dd(Auth::guard('company')->user()->logo)}} --}}
 
 
-            @auth
+
+            @if (Auth::guard('company')->check() OR Auth::check())
             <div class="flex items-center ml-4 cursor-pointer pr-2 border-r border-black"
                 onclick="window.location.href='{{route('profile')}}'">
                 <div class="w-[35px] h-[35px] rounded-[100%] overflow-hidden">
-                    <img src="{{asset('/images/chuuni cover.jpg')}}" class="w-full h-full object-cover" alt="profile" />
+                    @if (Auth::user() ?? "")
+                    <img src="{{Auth::user()->foto ? asset('./profile_image/' . Auth::user()->foto  ) : "
+                        ./images/user-icon-default.png"}}" class="w-full h-full object-cover" alt="profile" />
+                    @else
+                    <img src="{{Auth::guard('company')->user()->logo ? asset('./company.logo/' . Auth::guard('company')->user()->logo  ) : "
+                        ./images/user-icon-default.png"}}" class="w-full h-full object-cover" alt="profile" />
+                    @endif
                 </div>
                 <p class="font-[600] ml-2 w-[150px] truncate">
-                    {{Auth::user()->name}}
+                    {{Auth::user()->name ?? Auth::guard('company')->user()->nama}}
                 </p>
             </div>
-            @endauth
-
-            <button class="bg-[#2D9CDB] text-white ml-4 px-4 py-2 rounded-2xl tracking-wider hover:bg-black transition">
-                Sebagai Perusahaan
-            </button>
-
-            @guest
+            @else
             <button onclick="window.location.href='{{route('login')}}'"
                 class="bg-[#4A3AFF] text-white ml-4 px-4 py-2 rounded-2xl tracking-wider hover:bg-black transition">
                 Login
             </button>
-            @endguest
+            @endif
+
+
+            @if (Auth::guard('company')->check() == false)
+            <button onclick="window.location.href='{{route('company.login')}}'"
+                class="bg-[#2D9CDB] text-white ml-4 px-4 py-2 rounded-2xl tracking-wider hover:bg-black transition">
+                Sebagai Perusahaan
+            </button>
+            @endif
+
+
     </div>
 
     <!-- RESPONSIVE -->

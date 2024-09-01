@@ -9,7 +9,8 @@
     <div class="bg-[#f2f7fe] flex justify-center items-start flex-wrap gap-5 p-6">
         <div class="flex flex-col items-center bg-white p-4 rounded-2xl w-[350px]">
             <div class="w-[140px] h-[140px] rounded-full">
-                <img src="./images/user-icon-default.png" class="h-full w-full object-cover rounded-full"
+                <img src="{{$user->foto ? asset('./profile_image/' . $user->foto ) : "
+                    ./images/user-icon-default.png"}}" class="h-full w-full object-cover rounded-full"
                     alt="defaultPhoto" />
             </div>
             <h1 class="text-[#114FA9] text-center font-bold text-[40px] mt-5 leading-[40px]">
@@ -94,7 +95,7 @@
                         </p>
                         <div class="w-[20px] h-[20px] flex justify-center items-center text-xl bg-black rounded-full">
                         </div>
-                        <div class="md:w-[70%]  w-[300px] ml-2 ">
+                        <div class="md:w-[70%] flex-[100px]  sm:w-[300px] ml-2 ">
                             <h1 class="block font-bold text-2xl"> {{$i[1]}}
                             </h1>
                             <p>

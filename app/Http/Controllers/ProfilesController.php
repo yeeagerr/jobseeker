@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfilesController extends Controller
 {
+    public function userCrud()
+    {
+        $user = User::all();
+        return view('testcrud', compact('user'));
+    }
     public function index()
     {
         $message = "";
@@ -43,7 +48,6 @@ class ProfilesController extends Controller
 
     public function update(Request $request)
     {
-        // Validate the incoming request data
         $validate = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email',
@@ -51,33 +55,40 @@ class ProfilesController extends Controller
             'skills.*' => 'string|nullable',
         ]);
 
-        // Find the authenticated user
         $user = User::find(Auth::user()->id);
 
-
         $pengalaman = $user->pengalaman ? $user->pengalaman : [];
-        $newPengalaman = [
-            $request->input("year"),
-            $request->input("positionEx"),
-            $request->input("descriptionEx")
-        ];
-        // dd($newPengalaman);
+        $year = $request->input("year");
+        $position =  $request->input("positionEx");
+        $desc = $request->input("descriptionEx");
+        if ($year or $position or $desc) {
+            $newPengalaman = [
+                $year,
+                $position,
+                $desc
+            ];
 
-        $pengalaman[] = $newPengalaman;
+            $pengalaman[] = $newPengalaman;
+        }
 
-        // dd($pengalaman);
+        $foto = Auth::user()->foto;
 
-        // Update the user with validated data
+        if ($request->hasFile('profil')) {
+            $foto = $request->file('profil')->getClientOriginalName();
+            $request->file('profil')->move(public_path('profile_image'), $foto);
+        }
+
         $user->update([
             'name' => $validate['name'],
             'email' => $validate['email'],
-            'position' => $request->input('positionUser'), // Assuming 'positionUser' is a valid input
+            'position' => $request->input('positionUser'),
             'description' => $request->input('descriptionUser'),
-            'skills' => $request->input('skills'), // Use validated skills
+            'skills' => $request->input('skills'),
             'age' => $request->input('age'),
             'nohp' => $request->input('nohp'),
             'alamat' => $request->input('alamat'),
-            'pengalaman' => $pengalaman
+            'pengalaman' => $pengalaman,
+            'foto' => $foto
         ]);
 
 
