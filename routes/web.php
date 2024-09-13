@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\CompanyAuthContoller;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
@@ -25,11 +26,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['auth', 'verified', 'auth:company'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile/edit', [ProfilesController::class, 'show_edit'])->name('profile.edit');
     Route::get('/profileBreeze', [ProfileController::class, 'edit']);
     Route::patch('/profileBreeze', [ProfilesController::class, 'update'])->name('profile.update');
     Route::delete('/profileBreeze', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('logout/{id}', [AuthenticatedSessionController::class, 'delete'])
+        ->name('delete.account');
 });
 
 require __DIR__ . '/auth.php';

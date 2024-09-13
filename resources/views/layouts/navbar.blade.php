@@ -76,7 +76,13 @@
             @endif
 
 
-            @if (Auth::guard('company')->check() == false)
+            @if (Auth::guard('company')->check())
+
+            <button onclick="window.location.href='{{route('login')}}'"
+                class="bg-[#2D9CDB] text-white ml-4 px-4 py-2 rounded-2xl tracking-wider hover:bg-black transition">
+                Sebagai Pelamar
+            </button>
+            @else
             <button onclick="window.location.href='{{route('company.login')}}'"
                 class="bg-[#2D9CDB] text-white ml-4 px-4 py-2 rounded-2xl tracking-wider hover:bg-black transition">
                 Sebagai Perusahaan

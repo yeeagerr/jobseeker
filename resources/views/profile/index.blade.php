@@ -9,7 +9,7 @@
     <div class="bg-[#f2f7fe] flex justify-center items-start flex-wrap gap-5 p-6">
         <div class="flex flex-col items-center bg-white p-4 rounded-2xl w-[350px]">
             <div class="w-[140px] h-[140px] rounded-full">
-                <img src="{{$user->foto ? asset('./profile_image/' . $user->foto ) : "
+                <img src="{{$user->foto ?? null ? asset('./profile_image/' . $user->foto ) : "
                     ./images/user-icon-default.png"}}" class="h-full w-full object-cover rounded-full"
                     alt="defaultPhoto" />
             </div>
@@ -111,4 +111,12 @@
             </div>
         </div>
     </div>
+    <form action="{{route('delete.account', $user->id)}}" method="POST"
+        class="flex justify-end items-center w-full pr-5 mb-[-30px]">
+        @csrf
+        @method("DELETE")
+        <button type="submit" class="bg-[#FF0F0F] text-white border border-gray-300 py-2 px-4 rounded-2xl">
+            Delete Account
+        </button>
+    </form>
 </x-app-layout>

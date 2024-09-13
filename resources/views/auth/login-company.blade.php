@@ -42,9 +42,11 @@
                         Masuk
                     </button>
                 </div>
+                @guest
                 <p class="text-center mt-1">
                     Belum Ada Akun? <a href="{{route('company.register')}}" class="text-white">Sign Up !</a>
                 </p>
+                @endguest
             </form>
         </div>
     </div>
