@@ -13,7 +13,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'UserCompany' => App\Http\Middleware\UserAndCompany::class
+            'UserCompany' => App\Http\Middleware\UserAndCompany::class,
+            'isVerified' => App\Http\Middleware\UserCompanyVerified::class,
+            'guest-only' => App\Http\Middleware\GuestOnly::class,
+            'no-cache' => App\Http\Middleware\NoCache::class,
+
+
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

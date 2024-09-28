@@ -204,14 +204,10 @@
                 </p>
             </div>
 
-            <div class="flex items-center justify-center lg:justify-start mt-7 gap-5 flex-wrap">
+            <div class="flex items-start justify-center lg:justify-start mt-7 gap-5 flex-wrap">
+                @foreach ($jobs as $job)
                 @include('components.cardJob-1')
-                @include('components.cardJob-1')
-                @include('components.cardJob-1')
-                @include('components.cardJob-1')
-                @include('components.cardJob-1')
-                @include('components.cardJob-1')
-
+                @endforeach
             </div>
         </section>
     </main>

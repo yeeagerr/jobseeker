@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="title"> Profile </x-slot>
+    <x-slot name="title"> Profile - User </x-slot>
 
     {{-- @include('components.modal-danger') --}}
     @if (!Auth::user())
@@ -10,7 +10,7 @@
         <div class="flex flex-col items-center bg-white p-4 rounded-2xl w-[350px]">
             <div class="w-[140px] h-[140px] rounded-full">
                 <img src="{{$user->foto ?? null ? asset('./profile_image/' . $user->foto ) : "
-                    ./images/user-icon-default.png"}}" class="h-full w-full object-cover rounded-full"
+                    /images/user-icon-default.png"}}" class="h-full w-full object-cover rounded-full"
                     alt="defaultPhoto" />
             </div>
             <h1 class="text-[#114FA9] text-center font-bold text-[40px] mt-5 leading-[40px]">
@@ -111,12 +111,23 @@
             </div>
         </div>
     </div>
-    <form action="{{route('delete.account', $user->id)}}" method="POST"
-        class="flex justify-end items-center w-full pr-5 mb-[-30px]">
-        @csrf
-        @method("DELETE")
-        <button type="submit" class="bg-[#FF0F0F] text-white border border-gray-300 py-2 px-4 rounded-2xl">
+
+
+    <div class="flex justify-end items-center w-full pr-5 mb-5">
+        <x-modal-popup color="bg-[#FF0F0F]" firstBtn="true"
+            message="Are you sure want delete your account {{$user->name}}?" icon="question" title="Delete Account">
             Delete Account
-        </button>
-    </form>
+            <x-slot name="custom">
+                <form action="{{route('delete.account', $user->id)}}" method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <button type="submit" class="bg-[#FF0F0F] px-7 py-3 text-white rounded-3xl cursor-pointer">
+                        Yes, Delete Account
+                    </button>
+                </form>
+
+            </x-slot>
+        </x-modal-popup>
+    </div>
+
 </x-app-layout>

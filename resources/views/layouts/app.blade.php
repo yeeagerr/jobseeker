@@ -22,20 +22,31 @@
 </head>
 
 <body class="{{request()->is('/') ? "" : " bg-[#f2f7fd]"}}">
+    {{-- MODAL IF NOT LOGIN OR VERIFIED --}}
     @if (Auth::user() or Auth::guard('company')->check() )
     @if (Auth::user() and !request()->user()->hasVerifiedEmail() or Auth::guard('company')->check() and
-    Auth::guard('company')->user()->hasVerifiedEmail()
+    !Auth::guard('company')->user()->hasVerifiedEmail()
     )
     @php
     $message = "Kamu harus verifikasi email kamu telebih dahulu, Silahkan cek gmail kamu yang telah di registrasi";
-    $btnMessage = "Kembali";
     $route = route('verification.notice');
     @endphp
-    <x-modal-danger :message="$message" :btnMessage="$btnMessage" :route="$route" />
+    <x-modal-popup :message="$message" :link="$route" icon="x" title="Maaf" danger="true" />
+    {{--
+    <x-modal-danger :message="$message" :btnMessage="$btnMessage" :route="$route" /> --}}
     @endif
     @endif
-    <div class="min-h-screen ">
 
+    {{-- MODAL IF THERES FLASH MESSAGE --}}
+    @if (session('success'))
+    @php
+    $messageFlash = session("success")
+    @endphp
+    <x-modal-popup part="flash" title="Success" icon="check" :message="$messageFlash" />
+    @endif
+
+
+    <div class="min-h-screen ">
         {{-- @auth
         @include('layouts.navigation')
         @endauth --}}
@@ -59,10 +70,16 @@
         </main>
     </div>
 
+    @if (!request()->is('company/profile*') && !request()->is('user/profile*')&& !request()->is('company/job'))
     @include('layouts.footer')
+    @endif
 </body>
 @if (request()->is('profile/edit'))
 <script src="{{asset('resources/js/profileEdit.js')}}"></script>
+@endif
+
+@if (request()->is('company/profile'))
+<script src="{{asset('resources/js/profileCompany.js')}}"></script>
 @endif
 
 </html>

@@ -69,12 +69,20 @@ class CompanyAuthContoller extends Controller
             'password' => 'required'
         ]);
 
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
         $company = Company::where('email', $request->email)->first();
 
-        if (Hash::check($request->password, $company->password)) {
-            Auth::guard('company')->login($company);
+        if ($company) {
+            if (Hash::check($request->password, $company->password)) {
+                Auth::guard('company')->login($company);
 
-            return redirect()->route('home');
+                return redirect()->route('home');
+            } else {
+                return redirect()->route('company.login');
+            }
         } else {
             return redirect()->route('company.login');
         }

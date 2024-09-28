@@ -1,3 +1,7 @@
+@php
+$isUser = Auth::check() ? "profile" : "profile.company";
+@endphp
+{{-- {{dd($isUser)}} --}}
 <nav class="sticky top-0 z-[10] flex items-center px-5 justify-between h-[90px] rounded-bl-2xl rounded-br-2xl bg-white">
     <div class="flex-col">
         <h1 class="text-2xl font-bold tracking-wider">JOB SEEKER</h1>
@@ -13,10 +17,10 @@
         <a href="{{route('home')}}" class="font-[500] tracking-wider whitespace-nowrap {{request()->is('/') ? "
             border-b-2" : "" }} border-[#2D9CDB]">Home</a>
         <a href="{{route('company')}}"
-            class="font-[500] hover:border-b border-[rgb(45,156,219)] tracking-wider whitespace-nowrap {{request()->is('company*') ? "
+            class="font-[500] hover:border-b border-[rgb(45,156,219)] tracking-wider whitespace-nowrap {{request()->is('company/recruite*') ? "
             border-b-2" : "" }}">Rekrut</a>
-        <a href="{{route('profile')}}"
-            class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('profile*') ? "
+        <a href="{{route('company.profile')}}"
+            class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('company/profile*') ? "
             border-b-2" : "" }} ">Company Profile</a>
       @else
       <a href=" {{route('home')}}" class="font-[500] tracking-wider whitespace-nowrap {{request()->is('/') ? "
@@ -28,9 +32,11 @@
         <a href="{{route('job')}}"
             class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('job*') ? "
             border-b-2" : "" }}">Search Job</a>
-        <a href="{{route('profile')}}"
+        @auth
+        <a href="{{route('user.profile')}}"
             class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('profile*') ? "
             border-b-2" : "" }} ">My Profile</a>
+       @endauth
       @endif
     </div>
 
@@ -54,14 +60,14 @@
 
             @if (Auth::guard('company')->check() OR Auth::check())
             <div class="flex items-center ml-4 cursor-pointer pr-2 border-r border-black"
-                onclick="window.location.href='{{route('profile')}}'">
+                onclick="window.location.href='{{Auth::check() ? route('user.profile') : route('company.profile')}}'">
                 <div class="w-[35px] h-[35px] rounded-[100%] overflow-hidden">
                     @if (Auth::user() ?? "")
                     <img src="{{Auth::user()->foto ? asset('./profile_image/' . Auth::user()->foto  ) : "
-                        ./images/user-icon-default.png"}}" class="w-full h-full object-cover" alt="profile" />
+                        /images/user-icon-default.png"}}" class="w-full h-full object-cover" alt="profile" />
                     @else
                     <img src="{{Auth::guard('company')->user()->logo ? asset('./company.logo/' . Auth::guard('company')->user()->logo  ) : "
-                        ./images/user-icon-default.png"}}" class="w-full h-full object-cover" alt="profile" />
+                        /images/user-icon-default.png"}}" class="w-full h-full object-cover" alt="profile" />
                     @endif
                 </div>
                 <p class="font-[600] ml-2 w-[150px] truncate">
@@ -115,12 +121,12 @@
             <a href="{{route('job')}}"
                 class="text-xl font-[600] tracking-wide pb-1  border-[#2D9CDB] {{request()->is('job') ? " border-b-2"
                 : "" }}">Search Job</a>
-            @auth
-            <a href="{{route('profile')}}" class="text-xl font-[600] tracking-wide pb-1">My Profile</a>
-            @endauth
-            @guest
+            @if(Auth::guard('company')->check() OR Auth::check())
+            <a href="{{Auth::check() ? route('user.profile') : route('company.profile')}}"
+                class="text-xl font-[600] tracking-wide pb-1">My Profile</a>
+            @else
             <a href="{{route('login')}}" class="text-xl font-[600] tracking-wide pb-1">Login</a>
-            @endguest
+            @endif
         </div>
     </label>
     <!-- RESPONSIVE -->

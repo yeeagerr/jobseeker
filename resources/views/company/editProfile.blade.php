@@ -1,11 +1,12 @@
 <x-app-layout>
-    <x-slot name="title">
-        Register Perusahaan </x-slot>
+    <x-slot name="title"> Company Profile Edit </x-slot>
+
     <main class="flex justify-center mt-5">
-        <form class="w-[65rem] rounded-2xl bg-white p-3" action="{{route('company.create')}}" method="POST"
+        <form class="w-[65rem] rounded-2xl bg-white p-3" action="{{route('company.update')}}" method="POST"
             enctype="multipart/form-data">
             @csrf
-            <h1 class="font-bold text-2xl tracking-wide">Register Perusahaan</h1>
+            @method("PUT")
+            <h1 class="font-bold text-2xl tracking-wide">Edit Perusahaan</h1>
             <div class="mt-3 flex justify-between px-3 gap-3 flex-wrap">
                 <div>
                     <p class="font-bold mb-2">Foto Banner</p>
@@ -17,7 +18,7 @@
                                 class="hidden" />
                         </div>
                         <p id="bannerText" class="w-[120px] cursor-pointer truncate">
-                            No file choosen
+                            {{$company->banner}}
                         </p>
                     </div>
                     <x-input-error :messages="$errors->get('banner')" class="mt-2" />
@@ -33,7 +34,7 @@
                                 class="hidden" />
                         </div>
                         <p id="logoText" class="w-[120px] cursor-pointer truncate">
-                            No file choosen
+                            {{$company->logo}}
                         </p>
                     </div>
                     <x-input-error :messages="$errors->get('logo')" class="mt-2" />
@@ -45,7 +46,8 @@
             <div class="mb-5">
                 <label for="perusahaan" class="font-bold ml-3 text-lg">Nama Perusahaan</label>
                 <div class="shadow border flex px-3 items-center justify-between rounded-[50px] w-full h-[55px]">
-                    <input type="text" id="perusahaan" name="nama" class="h-full rounded-2xl w-full outline-none" />
+                    <input type="text" id="perusahaan" name="nama" value="{{$company->nama}}"
+                        class="h-full rounded-2xl w-full outline-none" />
                 </div>
                 <x-input-error :messages="$errors->get('nama')" class="mt-2" />
             </div>
@@ -53,7 +55,8 @@
             <div class="mb-5">
                 <label for="Lokasi" class="font-bold ml-3 text-lg">Lokasi</label>
                 <div class="shadow border flex px-3 items-center justify-between rounded-[50px] w-full h-[55px]">
-                    <input type="text" id="Lokasi" name="lokasi" class="h-full rounded-2xl w-full outline-none" />
+                    <input type="text" id="Lokasi" name="lokasi" value="{{$company->lokasi}}"
+                        class="h-full rounded-2xl w-full outline-none" />
                 </div>
                 <x-input-error :messages="$errors->get('lokasi')" class="mt-2" />
             </div>
@@ -61,7 +64,8 @@
             <div class="mb-5">
                 <label for="Website" class="font-bold ml-3 text-lg">Website</label>
                 <div class="shadow border flex px-3 items-center justify-between rounded-[50px] w-full h-[55px]">
-                    <input type="text" id="Website" name="link" placeholder="Contoh : www.websitekamu.com (opsional)"
+                    <input type="text" id="Website" name="link" value="{{$company->link}}"
+                        placeholder="Contoh : www.websitekamu.com (opsional)"
                         class="h-full rounded-2xl w-full outline-none" />
                 </div>
                 <x-input-error :messages="$errors->get('link')" class="mt-2" />
@@ -70,8 +74,8 @@
             <div class="mb-5">
                 <label for="Industri" class="font-bold ml-3 text-lg">Industri</label>
                 <div class="shadow border flex px-3 items-center justify-between rounded-[50px] w-full h-[55px]">
-                    <input type="text" id="Industri" name="industri" placeholder="Contoh : Bergerak dibidang IT"
-                        class="h-full rounded-2xl w-full outline-none" />
+                    <input type="text" id="Industri" name="industri" value="{{$company->industri}}" placeholder="Contoh :
+                    Bergerak dibidang IT" class="h-full rounded-2xl w-full outline-none" />
                 </div>
                 <x-input-error :messages="$errors->get('industri')" class="mt-2" />
             </div>
@@ -79,7 +83,7 @@
             <div class="mb-5">
                 <label for="companySize" class="font-bold ml-3 text-lg">Company Size</label>
                 <div class="shadow border flex px-3 items-center justify-between rounded-[50px] w-full h-[55px]">
-                    <input type="text" id="companySize" name="size"
+                    <input type="text" id="companySize" name="size" value="{{$company->size}}"
                         placeholder="Contoh : sekitar 2000 - 3000 orang / karyawan dll.."
                         class="h-full rounded-2xl w-full outline-none" />
                 </div>
@@ -89,7 +93,8 @@
             <div class="mb-5">
                 <label for="desc" class="font-bold ml-3 text-lg">Deskripsi</label>
                 <div class="shadow border flex px-3 items-center justify-between rounded-[50px] w-full h-[55px]">
-                    <input type="text" id="desc" name="deskripsi" class="h-full rounded-2xl w-full outline-none" />
+                    <input value="{{$company->deskripsi}}" type="text" id="desc" name="deskripsi"
+                        class="h-full rounded-2xl w-full outline-none" />
                 </div>
                 <x-input-error :messages="$errors->get('deskripsi')" class="mt-2" />
             </div>
@@ -97,8 +102,10 @@
             <div class="mb-5">
                 <label for="email" class="font-bold ml-3 text-lg">Email</label>
                 <div class="shadow border flex px-3 items-center justify-between rounded-[50px] w-full h-[55px]">
-                    <input type="email" id="email" name="email" class="h-full rounded-2xl w-full outline-none" />
+                    <input value="{{$company->email}}" type="email" id="email" name="email"
+                        class="h-full rounded-2xl w-full outline-none" />
                 </div>
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
             <div class="mb-5">
@@ -113,7 +120,7 @@
             <div class="mb-5 flex justify-end gap-3">
                 <button
                     class="w-[150px] h-[50px] border-[#4A3AFF] border-2 rounded-2xl font-bold hover:bg-[#4A3AFF] hover:text-white transition"
-                    type="button">
+                    onclick="window.location.href = '/company/profile'" type="button">
                     Tidak Jadi
                 </button>
                 <button type="submit"
@@ -123,15 +130,4 @@
             </div>
         </form>
     </main>
-
-    <script>
-        document.getElementById("filebanner").addEventListener("change", (e) => {
-        document.getElementById("bannerText").innerHTML =
-          e.target.files[0]["name"];
-      });
-  
-      document.getElementById("filelogo").addEventListener("change", (e) => {
-        document.getElementById("logoText").innerHTML = e.target.files[0]["name"];
-      });
-    </script>
 </x-app-layout>

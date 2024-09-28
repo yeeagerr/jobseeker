@@ -39,7 +39,9 @@
         </div>
 
         <div class="flex items-center justify-center md:justify-start gap-3 mt-5 flex-wrap">
-            @include('components.cardJob-1')
+            @foreach ($companies as $company)
+            @include('components.cardCompany')
+            @endforeach
         </div>
     </main>
 </x-app-layout>

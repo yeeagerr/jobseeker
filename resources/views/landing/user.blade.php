@@ -100,17 +100,10 @@
         Seluruh Kategori :
     </p>
 
-    <section class="flex justify-evenly flex-wrap items-center mt-5">
+    <section class="flex justify-evenly flex-wrap items-start mt-5">
+        @foreach ($jobs as $job)
         @include('components.cardJob-1')
-        @include('components.cardJob-1')
-        @include('components.cardJob-1')
-        @include('components.cardJob-1')
-        @include('components.cardJob-1')
-        @include('components.cardJob-1')
-        @include('components.cardJob-1')
-        @include('components.cardJob-1')
-
-
+        @endforeach
     </section>
 
     <h2 class="text-[#364458] text-2xl md:text-[50px] leading-tight font-bold tracking-wider text-center mt-10">

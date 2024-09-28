@@ -6,14 +6,14 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ProfilesController extends Controller
+class UserController extends Controller
 {
     public function userCrud()
     {
         $user = User::all();
         return view('testcrud', compact('user'));
     }
-    public function index()
+    public function profile()
     {
         $message = "";
         $btnMessage = "";
@@ -32,7 +32,7 @@ class ProfilesController extends Controller
 
 
 
-        return view('profile.index', [
+        return view('profile.user', [
             'user' => Auth::user(),
             'message' => $message,
             'btnMessage' => $btnMessage,
@@ -93,6 +93,18 @@ class ProfilesController extends Controller
 
 
 
-        return redirect()->route('profile');
+        return redirect()->route('user.profile')->with('success', 'Your account successfully updated');
+    }
+
+    public function destroy(Request $request)
+    {
+        User::find(Auth::user()->id)->delete();
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
