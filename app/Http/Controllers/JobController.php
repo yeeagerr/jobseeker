@@ -14,6 +14,11 @@ class JobController extends Controller
         return view('jobs.index', compact('jobs'));
     }
 
+    public function detail(Pekerjaan $id)
+    {
+        return view('jobs.detail-job', compact('id'));
+    }
+
     public function job()
     {
         return view('company.addJob');

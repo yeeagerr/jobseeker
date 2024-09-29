@@ -2,24 +2,8 @@
     <x-slot name="title"> Profile - Company </x-slot>
 
 
-    <header class="bg-[#E2ECFE] py-5 flex justify-center items-center">
-        <div class="w-[85%] h-full flex items-center">
-            <div class="w-[90px] h-[90px] mr-5 ">
-                <img src="{{$id->logo ?? null ? asset('./company.logo/' . $id->logo ) : "
-                    /images/user-icon-default.png"}}" class="w-full h-full object-cover rounded-full"
-                    alt="companyLogo" />
-            </div>
-            <div>
-                <h1 class="text-2xl tracking-wider text-[#114FA9]">
-                    {{$id->nama}}
-                </h1>
-                <div class="mt-1 text-[gray] opacity-[70%] flex items-center gap-1">
-                    <i class="fa-solid fa-bullseye"></i>
-                    <p class="tracking-wider">{{$id->lokasi}}</p>
-                </div>
-            </div>
-        </div>
-    </header>
+    <x-header-title :title="$id->nama" :logo="asset('/company.logo/' . $id->logo)" :lokasi="$id->lokasi" />
+
 
     <div class="flex justify-center items-center mt-6">
         <div class="bg-[#E2ECFE] w-[85%] h-[300px] rounded-xl p-5">
@@ -186,7 +170,8 @@
                                 Delete
                             </button>
                             <p class="text-gray-700 mt-3">
-                                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
+                                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
+                                officia
                                 consequat duis enim velit mollit.
                             </p>
                         </div>

@@ -47,7 +47,7 @@
             <p class="text-[gray] text-sm w-[165px] truncate">{{$job->lokasi ?? ""}}</p>
         </div>
 
-        <button
+        <button onclick="window.location.href='{{route('detail.job', $job->id)}}'"
             class="hover:bg-[#4567D6] border-2 hover:text-white transition  border-[#4567D6] px-3 py-1 font-bold tracking-wider rounded-xl">
             Detail
         </button>

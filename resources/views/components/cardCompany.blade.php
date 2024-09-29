@@ -30,7 +30,7 @@
 
     <div class="flex justify-end items-center mt-4">
 
-        <button
+        <button onclick="window.location.href='{{route('company.profile', $company->id)}}'"
             class="hover:bg-[#4567D6] border-2 hover:text-white transition border-[#4567D6] px-3 py-1 font-bold tracking-wider rounded-xl">
             See More
         </button>

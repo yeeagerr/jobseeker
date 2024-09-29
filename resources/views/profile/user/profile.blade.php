@@ -2,7 +2,7 @@
     <x-slot name="title"> Profile - User </x-slot>
 
     {{-- @include('components.modal-danger') --}}
-    @if (!Auth::user())
+    @if (!Auth::check() and !Auth::guard('company')->check())
     <x-modal-danger :message="$message" :btnMessage="$btnMessage" :route="$route" />
     @endif
 
