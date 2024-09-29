@@ -12,6 +12,8 @@
                 </div>
                 <i class="bg-white p-2 rounded-xl fa-regular fa-bookmark text-black cursor-pointer"></i>
             </div>
+
+            @if (Auth::guard('company')->check() AND Auth::guard('company')->user()->id == $job->company->id)
             <div class="flex mt-2 justify-end gap-1">
                 <form action="{{route('job.destroy', $job->id)}}" method="post">
                     @csrf
@@ -26,6 +28,8 @@
                     Edit
                 </button>
             </div>
+            @endif
+
             <div class="flex justify-between items-center mt-2 mb-3">
                 <div class="w-[160px]">
                     <p class="text-lg text-[#114FA9] block ">
@@ -67,7 +71,7 @@
             <p class="text-[gray] text-sm w-[165px] truncate">{{$job->lokasi ?? ""}}</p>
         </div>
 
-        <button
+        <button onclick="window.location.href='{{route('detail.job', $job->id)}}'"
             class="hover:bg-[#4567D6] border-2 hover:text-white transition  border-[#4567D6] px-3 py-1 font-bold tracking-wider rounded-xl">
             Detail
         </button>

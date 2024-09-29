@@ -72,7 +72,7 @@
     @include('layouts.footer')
     @endif
 </body>
-@if (request()->is('edit/profile'))
+@if (request()->is('user/edit/profile'))
 <script src="{{asset('resources/js/profileEdit.js')}}"></script>
 @endif
 
