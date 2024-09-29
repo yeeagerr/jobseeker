@@ -54,6 +54,8 @@ class UserController extends Controller
             'email' => 'required|email',
             'skills' => 'array|nullable',
             'skills.*' => 'string|nullable',
+            'age' => 'int|nullable|min:18',
+            'nohp' => 'nullable|min:0',
         ]);
 
         $user = User::find(Auth::user()->id);

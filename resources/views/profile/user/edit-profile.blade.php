@@ -30,6 +30,8 @@
 
                         <i class="fa-regular fa-user border rounded-full py-1 px-3 text-lg"></i>
                     </div>
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
+
                 </div>
 
                 <div class="mt-4">
@@ -38,6 +40,9 @@
                         <input type="text" placeholder="Contoh : Front End Developer" value="<?= $user->position ?>"
                             id="posisi" name="positionUser" class="h-full rounded-2xl w-full outline-none" />
                     </div>
+
+                    <x-input-error :messages="$errors->get('positionUser')" class="mt-2" />
+
                 </div>
 
                 <div class="mt-4">
@@ -47,6 +52,7 @@
                             value="<?= $user->description ?>" id="deskripsi" name="descriptionUser"
                             class="h-full rounded-2xl w-full outline-none" />
                     </div>
+                    <x-input-error :messages="$errors->get('descriptionUser')" class="mt-2" />
                 </div>
 
                 <div class="mt-4">
@@ -72,6 +78,8 @@
                         </div>
                         @endforeach
                     </div>
+                    <x-input-error :messages="$errors->get('skills[]')" class="mt-2" />
+
                 </div>
 
                 <h1 class="font-[700] mt-5 text-2xl tracking-wider mb-3">
@@ -81,9 +89,10 @@
                 <div class="mb-5">
                     <label for="Umur" class="font-bold ml-3 text-lg">Umur</label>
                     <div class="shadow border flex px-3 items-center justify-between rounded-[50px] w-full h-[55px]">
-                        <input type="text" placeholder="Contoh : 26 Tahun" id="Umur" name="age"
+                        <input type="number" inputmode="numeric" min="0" placeholder="Contoh : 26 " id="Umur" name="age"
                             class="h-full rounded-2xl w-full outline-none" value="<?= $user->age ?>" />
                     </div>
+                    <x-input-error :messages="$errors->get('age')" class="mt-2" />
                 </div>
 
                 <div class="mb-5">
@@ -92,6 +101,8 @@
                         <input type="email" placeholder="Contoh : youremail@gmail.com" id="Email" name="email"
                             value="<?= $user->email ?>" class="h-full rounded-2xl w-full outline-none" />
                     </div>
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
                 </div>
 
                 <div class="mb-5">
@@ -100,6 +111,7 @@
                         <input type="text" placeholder="Contoh : Bengkong Baru Blok A no 36" id="alamat" name="alamat"
                             class="h-full rounded-2xl w-full outline-none" value="<?=$user->alamat ?>" />
                     </div>
+                    <x-input-error :messages="$errors->get('alamat')" class="mt-2" />
                 </div>
 
                 <div class=" mb-5">
@@ -108,6 +120,7 @@
                         <input type="number" inputmode="numeric" placeholder="Contoh : 08117700068" id="nohp"
                             name="nohp" value="<?= $user->nohp ?>" class="h-full rounded-2xl w-full outline-none" />
                     </div>
+                    <x-input-error :messages="$errors->get('nohp')" class="mt-2" />
                 </div>
 
                 <h1 class="font-[700] mt-5 text-2xl tracking-wider mb-3">

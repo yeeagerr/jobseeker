@@ -14,6 +14,7 @@
                         <input name="tanggal" type="date" min="{{date('Y-m-d')}}" id="date" class="h-full
                         rounded-2xl w-full outline-none" placeholder="Contoh: 10 Feb, 2069" />
                     </div>
+                    <x-input-error :messages="$errors->get('tanggal')" class="mt-2" />
                 </div>
 
                 <!-- Job Title -->
@@ -24,6 +25,7 @@
                             class="h-full rounded-2xl w-full outline-none"
                             placeholder="Contoh: Senior Back End Developer" />
                     </div>
+                    <x-input-error :messages="$errors->get('pekerjaan')" class="mt-2" />
                 </div>
 
                 <!-- Work Time, Type, and Level -->
@@ -40,6 +42,7 @@
                                 <!-- Add options here -->
                             </select>
                         </div>
+                        <x-input-error :messages="$errors->get('jam')" class="mt-2" />
                     </div>
                     <div>
                         <label for="tipe-pekerjaan" class="font-bold ml-3 text-lg">Pilih Tipe Pekerjaan</label>
@@ -60,6 +63,7 @@
                                 <!-- Add options here -->
                             </select>
                         </div>
+                        <x-input-error :messages="$errors->get('tingkat')" class="mt-2" />
                     </div>
                 </div>
 
@@ -71,6 +75,7 @@
                         <input type="text" id="gaji" name="gaji" class="h-full rounded-2xl w-full outline-none"
                             placeholder="Contoh: Rp. 5 Juta" />
                     </div>
+                    <x-input-error :messages="$errors->get('gaji')" class="mt-2" />
                 </div>
 
                 <!-- Lokasi -->
@@ -80,6 +85,7 @@
                         <input type="text" id="lokasi" name="lokasi" class="h-full rounded-2xl w-full outline-none"
                             placeholder="Contoh: Pembensin Vitka Batam" />
                     </div>
+                    <x-input-error :messages="$errors->get('lokasi')" class="mt-2" />
                 </div>
 
                 <!-- Job Description -->
@@ -89,6 +95,7 @@
                         <input type="text" id="job-desc" name="deskripsi" class="h-full rounded-2xl w-full outline-none"
                             placeholder="Contoh: Panjang kali lebar" />
                     </div>
+                    <x-input-error :messages="$errors->get('deskripsi')" class="mt-2" />
                 </div>
 
                 <!-- Job Requirement -->
@@ -98,11 +105,13 @@
                         <input type="text" id="job-requirement" name="requirement"
                             class="h-full rounded-2xl w-full outline-none" placeholder="Contoh: Panjang kali lebar" />
                     </div>
+                    <x-input-error :messages="$errors->get('requirement')" class="mt-2" />
                 </div>
 
                 <!-- Buttons -->
                 <div class="flex justify-end gap-5 mt-6">
-                    <button type="button" onclick="window.location.href = '{{route('company.profile')}}'"
+                    <button type="button"
+                        onclick="window.location.href = '{{route('company.profile', Auth::guard('company')->user()->id)}}'"
                         class="bg-transparent font-semibold border-2 border-[#4f46e5] py-3 px-6 rounded-full shadow-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Tidak Jadi
                     </button>

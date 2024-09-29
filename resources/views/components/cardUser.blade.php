@@ -2,7 +2,7 @@
     <div class="bg-[#E2ECFE] rounded-3xl p-3">
         <div class="flex justify-between items-center">
             <div class="bg-white p-2 rounded-xl tracking-wide font-bold">
-                {{$s->age ?? "Unknown"}}
+                {{$s->age . " Tahun" ?? "Age Unknown"}}
             </div>
             <i class="bg-white p-2 rounded-xl fa-regular fa-bookmark text-black cursor-pointer"></i>
         </div>

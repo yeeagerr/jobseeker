@@ -20,7 +20,7 @@ class UserCompanyVerified
         if ($user and $user->hasVerifiedEmail()) {
             return $next($request);
         } else {
-            return redirect()->route('home');
+            return redirect()->route('login');
         }
     }
 }

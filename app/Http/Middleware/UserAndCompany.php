@@ -19,7 +19,7 @@ class UserAndCompany
         if (Auth::user() or Auth::guard('company')->check()) {
             return $next($request);
         } else {
-            return redirect()->route('home');
+            return redirect()->route('login');
         }
     }
 }

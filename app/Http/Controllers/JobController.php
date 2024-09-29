@@ -21,7 +21,7 @@ class JobController extends Controller
 
     public function job()
     {
-        return view('company.addJob');
+        return view('jobs.add-job');
     }
 
     public function store(Request $request)
@@ -51,6 +51,6 @@ class JobController extends Controller
             'gaji'         => $validatedData['gaji'],            // Salary (nullable)
             'requirement'  => $validatedData['requirement'],     // Requirements (nullable
         ]);
-        return redirect()->route('company.profile')->with("success", "Job successfully added!");
+        return redirect()->route('company.profile', Auth::guard("company")->user()->id)->with("success", "Job successfully added!");
     }
 }

@@ -40,6 +40,9 @@
                             @endforeach
 
                         </div>
+                        @empty($id->skills)
+                        <p class="text-center">-</p>
+                        @endempty
                     </div>
 
                     @if (Auth::check() AND $user->id == $id->id)
