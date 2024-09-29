@@ -101,8 +101,8 @@
     </p>
 
     <section class="flex justify-evenly flex-wrap items-start mt-5">
-        @foreach ($jobs as $job)
-        @include('components.cardJob-1')
+        @foreach ($companies as $company)
+        @include('components.cardCompany')
         @endforeach
     </section>
 

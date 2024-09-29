@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Pekerjaan;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,8 +17,8 @@ class HomeController extends Controller
             $seeker = User::take(5)->get();
             return view('landing.company', compact('seeker'));
         } else {
-            $jobs = Pekerjaan::take(5)->get();
-            return view('landing.user', compact('jobs'));
+            $companies = Company::take(5)->get();
+            return view('landing.user', compact('companies'));
         }
     }
 }

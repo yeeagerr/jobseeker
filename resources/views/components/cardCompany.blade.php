@@ -10,7 +10,7 @@
         <div class="flex justify-between items-center mt-4 mb-3">
             <div class="w-[160px]">
                 <p class="text-lg text-[#114FA9] block tracking-wider">
-                    Google
+                    {{$company->lokasi}}
                 </p>
                 <p class="font-bold text-xl">
                     {{$company->nama}}
