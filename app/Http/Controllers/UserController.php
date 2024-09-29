@@ -13,7 +13,7 @@ class UserController extends Controller
         $user = User::all();
         return view('testcrud', compact('user'));
     }
-    public function profile()
+    public function profile(User $id)
     {
         $message = "";
         $btnMessage = "";
@@ -32,18 +32,19 @@ class UserController extends Controller
 
 
 
-        return view('profile.user', [
+        return view('profile.user.profile', [
             'user' => Auth::user(),
             'message' => $message,
             'btnMessage' => $btnMessage,
-            'route' => $route
+            'route' => $route,
+            'id' => $id
         ]);
     }
 
     public function show_edit()
     {
         $user = Auth::user();
-        return view('profile.edit-profile', compact('user'));
+        return view('profile.user.edit-profile', compact('user'));
     }
 
     public function update(Request $request)
@@ -93,7 +94,7 @@ class UserController extends Controller
 
 
 
-        return redirect()->route('user.profile')->with('success', 'Your account successfully updated');
+        return redirect()->route('user.profile', $user->id)->with('success', 'Your account successfully updated');
     }
 
     public function destroy(Request $request)

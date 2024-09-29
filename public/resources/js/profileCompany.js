@@ -5,7 +5,7 @@ const jobs = document.getElementById("jobs");
 const buttonTemplates = {
     about: `
     <button
-        onclick="window.location.href = '/company/profile/edit'"
+        onclick="window.location.href = '/company/edit/profile'"
       class="bg-indigo-600 text-white font-semibold py-3 px-6 rounded-full shadow-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
     >
       Edit Profile Perusahaan

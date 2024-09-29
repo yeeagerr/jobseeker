@@ -9,27 +9,27 @@
     <div class="bg-[#f2f7fe] flex justify-center items-start flex-wrap gap-5 p-6">
         <div class="flex flex-col items-center bg-white p-4 rounded-2xl w-[350px]">
             <div class="w-[140px] h-[140px] rounded-full">
-                <img src="{{$user->foto ?? null ? asset('./profile_image/' . $user->foto ) : "
+                <img src="{{$id->foto ?? null ? asset('./profile_image/' . $id->foto ) : "
                     /images/user-icon-default.png"}}" class="h-full w-full object-cover rounded-full"
                     alt="defaultPhoto" />
             </div>
             <h1 class="text-[#114FA9] text-center font-bold text-[40px] mt-5 leading-[40px]">
-                {{$user->name ?? "John Doe"}}
+                {{$id->name ?? "John Doe"}}
             </h1>
             <p class="text-lg tracking-wide font-[600] text-center">
                 {{-- Fullstack Web Developer --}}
-                {{$user->position ?? "-"}}
+                {{$id->position ?? "-"}}
             </p>
 
             <p class="mt-5 text-center">
-                {{$user->description ?? "-"}}
+                {{$id->description ?? "-"}}
             </p>
 
             <div class="w-full my-6">
                 <p class="font-bold text-xl tracking-wider block">Skills</p>
                 <div class="flex gap-2 flex-wrap mt-2">
 
-                    @foreach ($user->skills ?? [] as $skill)
+                    @foreach ($id->skills ?? [] as $skill)
                     <div
                         class="py-1 cursor-default transform hover:bg-[#4567D6] hover:text-white transition px-4 border-[#4567D6] border-2 rounded-2xl">
                         {{$skill}}
@@ -40,10 +40,12 @@
                 </div>
             </div>
 
+            @if (Auth::check() AND $user->id == $id->id)
             <button onclick="window.location.href ='{{route('profile.edit')}}'"
                 class="bg-[#4A3AFF] py-3 w-[90%] rounded-[35px] text-white">
                 Edit Profile Kamu
             </button>
+            @endif
         </div>
 
         <div class="bg-white flex-[500px] p-4 rounded-2xl ">
@@ -52,18 +54,18 @@
             </h1>
 
             <p class="font-bold text-sm md:text-xl mt-3">
-                <span class="text-[gray] tracking-wide">Umur</span> : {{$user->age ?? "-"}} Tahun
+                <span class="text-[gray] tracking-wide">Umur</span> : {{$id->age ?? "-"}} Tahun
             </p>
             <p class="font-bold text-sm md:text-xl mt-2">
                 <span class="text-[gray] tracking-wide">Email</span> :
-                {{$user->email ?? "-"}}
+                {{$id->email ?? "-"}}
             </p>
             <p class="font-bold text-sm md:text-xl mt-2">
-                <span class="text-[gray] tracking-wide">Alamat</span> : {{$user->alamat ?? "-"}}
+                <span class="text-[gray] tracking-wide">Alamat</span> : {{$id->alamat ?? "-"}}
             </p>
             <p class="font-bold text-sm md:text-xl mt-2">
                 <span class="text-[gray] tracking-wide">Nomor Handphone</span> :
-                {{$user->nohp ?? "-"}}
+                {{$id->nohp ?? "-"}}
             </p>
 
             <div class="flex justify-between gap-3 items-center mt-7">
@@ -85,10 +87,10 @@
 
                     <!-- TIMELINE PER YEAR -->
 
-                    {{-- @foreach ($user->pengalaman as $i)
+                    {{-- @foreach ($id->pengalaman as $i)
                     {{dd($i)}}
                     @endforeach --}}
-                    @foreach ($user->pengalaman ?? [] as $i)
+                    @foreach ($id->pengalaman ?? [] as $i)
                     <div class="flex relative items-center z-1 mt-[10px] w-full ">
                         <p class="w-[110.5px]  overflow-hidden text-center text-[gray] font-bold">
                             {{$i[0]}}
@@ -113,12 +115,13 @@
     </div>
 
 
+    @if (Auth::check() AND $user->id == $id->id)
     <div class="flex justify-end items-center w-full pr-5 mb-5">
         <x-modal-popup color="bg-[#FF0F0F]" firstBtn="true"
-            message="Are you sure want delete your account {{$user->name}}?" icon="question" title="Delete Account">
+            message="Are you sure want delete your account {{$id->name}}?" icon="question" title="Delete Account">
             Delete Account
             <x-slot name="custom">
-                <form action="{{route('delete.account', $user->id)}}" method="POST">
+                <form action="{{route('delete.account', $id->id)}}" method="POST">
                     @csrf
                     @method("DELETE")
                     <button type="submit" class="bg-[#FF0F0F] px-7 py-3 text-white rounded-3xl cursor-pointer">
@@ -129,5 +132,6 @@
             </x-slot>
         </x-modal-popup>
     </div>
+    @endif
 
 </x-app-layout>

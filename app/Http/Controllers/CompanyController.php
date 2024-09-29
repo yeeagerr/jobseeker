@@ -22,17 +22,17 @@ class CompanyController extends Controller
         return view('company.index', compact('companies'));
     }
 
-    public function profile()
+    public function profile(Company $id)
     {
         $user = Auth::guard('company')->user();
         $jobs = Pekerjaan::all();
-        return view('profile.company', compact('user', 'jobs'));
+        return view('profile.company.profile', compact('user', 'jobs', 'id'));
     }
 
     public function show_edit()
     {
         $company = Auth::guard('company')->user();
-        return view('company.editProfile', compact('company'));
+        return view('profile.company.edit-profile', compact('company'));
     }
 
     public function update(Request $request)
@@ -82,6 +82,6 @@ class CompanyController extends Controller
 
         $company->update($validate);
         // return redirect()->route('company.edit')->with("success", "Your company profile successfully updated");
-        return redirect()->route('company.profile')->with("success", "Your company profile successfully updated");
+        return redirect()->route('company.profile', $company->id)->with("success", "Your company profile successfully updated");
     }
 }

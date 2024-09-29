@@ -72,11 +72,11 @@
     @include('layouts.footer')
     @endif
 </body>
-@if (request()->is('profile/edit'))
+@if (request()->is('edit/profile'))
 <script src="{{asset('resources/js/profileEdit.js')}}"></script>
 @endif
 
-@if (request()->is('company/profile'))
+@if (request()->is('company/profile*') AND Auth::guard('company')->check())
 <script src="{{asset('resources/js/profileCompany.js')}}"></script>
 @endif
 

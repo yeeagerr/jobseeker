@@ -5,17 +5,17 @@
     <header class="bg-[#E2ECFE] py-5 flex justify-center items-center">
         <div class="w-[85%] h-full flex items-center">
             <div class="w-[90px] h-[90px] mr-5 ">
-                <img src="{{$user->logo ?? null ? asset('./company.logo/' . $user->logo ) : "
+                <img src="{{$id->logo ?? null ? asset('./company.logo/' . $id->logo ) : "
                     /images/user-icon-default.png"}}" class="w-full h-full object-cover rounded-full"
                     alt="companyLogo" />
             </div>
             <div>
                 <h1 class="text-2xl tracking-wider text-[#114FA9]">
-                    {{$user->nama}}
+                    {{$id->nama}}
                 </h1>
                 <div class="mt-1 text-[gray] opacity-[70%] flex items-center gap-1">
                     <i class="fa-solid fa-bullseye"></i>
-                    <p class="tracking-wider">{{$user->lokasi}}</p>
+                    <p class="tracking-wider">{{$id->lokasi}}</p>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
 
     <div class="flex justify-center items-center mt-6">
         <div class="bg-[#E2ECFE] w-[85%] h-[300px] rounded-xl p-5">
-            <img src="{{$user->banner ?? null ? asset('./company.banner/' . $user->banner ) : "
+            <img src="{{$id->banner ?? null ? asset('./company.banner/' . $id->banner ) : "
                 ./images/user-icon-default.png"}}" class="w-full object-cover h-full rounded-xl" />
         </div>
     </div>
@@ -33,27 +33,29 @@
             <div class="flex justify-between items-center">
                 <div>
                     <div class="w-[80px] h-[80px]">
-                        <img src="{{$user->logo ?? null ? asset('./company.logo/' . $user->logo ) : "
+                        <img src="{{$id->logo ?? null ? asset('./company.logo/' . $id->logo ) : "
                             ./images/user-icon-default.png"}}" alt="googlelogo"
                             class="w-full h-full rounded-full object-cover" />
                     </div>
                     <h1 class="text-[#114FA9] tracking-wider text-2xl">
-                        {{$user->nama}}
+                        {{$id->nama}}
 
                     </h1>
 
                     <div class="flex items-center justify-start gap-3">
                         <img src="{{asset('images/bintang/bintang0.png')}}" alt="rating" class="mt-1" width="110px" />
-                        <p class="text-[gray]">6.0 total rating from {{count($user->has_review)}} reviews</p>
+                        <p class="text-[gray]">6.0 total rating from {{count($id->has_review)}} reviews</p>
                     </div>
                 </div>
 
+                @if (Auth::guard('company')->check() AND Auth::guard('company')->user()->id == $id->id)
                 <div id="switchBtn">
                     <button onclick="window.location.href = '{{route('company.edit')}}'"
                         class="bg-indigo-600 text-white font-semibold py-3 px-6 rounded-full shadow-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Edit Profile Perusahaan
                     </button>
                 </div>
+                @endif
             </div>
             <div class="mt-5 flex flex-col">
                 <div class="flex">
@@ -102,19 +104,19 @@
                             <p class="font-bold text-sm md:text-lg tracking-wider w-[150px] md:w-[250px]">
                                 Webiste
                             </p>
-                            <p class="text-sm md:text-lg">: {{$user->link}}</p>
+                            <p class="text-sm md:text-lg">: {{$id->link}}</p>
                         </div>
                         <div class="flex">
                             <p class="font-bold text-sm md:text-lg tracking-wider w-[150px] md:w-[250px]">
                                 Industry
                             </p>
-                            <p class="text-sm md:text-lg">: {{$user->industri}}</p>
+                            <p class="text-sm md:text-lg">: {{$id->industri}}</p>
                         </div>
                         <div class="flex">
                             <p class="font-bold text-sm md:text-lg tracking-wider w-[150px] md:w-[250px]">
                                 Company Size
                             </p>
-                            <p class="text-sm md:text-lg">: {{$user->size}}</p>
+                            <p class="text-sm md:text-lg">: {{$id->size}}</p>
                         </div>
 
                         <div class="flex">
@@ -122,12 +124,12 @@
                                 Primary Location
                             </p>
                             <p class="text-sm md:text-lg w-[60%] h-auto">
-                                : {{$user->lokasi}}
+                                : {{$id->lokasi}}
                             </p>
                         </div>
 
                         <p class="text-lg mt-5">
-                            {{$user->deskripsi}}
+                            {{$id->deskripsi}}
                         </p>
                     </div>
                     <!-- ABOUT -->

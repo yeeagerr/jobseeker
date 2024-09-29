@@ -138,7 +138,7 @@
                 </div>
 
                 <div class="mb-5 flex justify-end gap-3">
-                    <button onclick="window.location.href = '{{route('user.profile')}}'"
+                    <button onclick="window.location.href = '{{route('user.profile', $user->id)}}'"
                         class="w-[150px] h-[50px] border-[#4A3AFF] border-2 rounded-2xl font-bold hover:bg-[#4A3AFF] hover:text-white transition"
                         type="button">
                         Tidak Jadi

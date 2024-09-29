@@ -15,16 +15,16 @@ Route::get("/job", [JobController::class, 'index'])->name('job');
 
 Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () {
     Route::prefix("user")->middleware('UserOnly')->group(function () {
-        Route::get("/profile", [UserController::class, 'profile'])->name('user.profile');
-        Route::get('/profile/edit', [UserController::class, 'show_edit'])->name('profile.edit');
-        Route::patch('/profile/update', [UserController::class, 'update'])->name('profile.update');
+        Route::get("/profile/{id}", [UserController::class, 'profile'])->name('user.profile');
+        Route::get('/edit/profile', [UserController::class, 'show_edit'])->name('profile.edit');
+        Route::patch('/edit/profile', [UserController::class, 'update'])->name('profile.update');
     });
 
     Route::middleware("CompanyOnly")->group(function () {
         Route::prefix('company')->group(function () {
-            Route::get("/profile", [CompanyController::class, "profile"])->name('company.profile');
-            Route::get("/profile/edit", [CompanyController::class, "show_edit"])->name("company.edit");
-            Route::put("/profile/edit", [CompanyController::class, "update"])->name("company.update");
+            Route::get("/profile/{id}", [CompanyController::class, "profile"])->name('company.profile');
+            Route::get("/edit/profile", [CompanyController::class, "show_edit"])->name("company.edit");
+            Route::put("/edit/profile", [CompanyController::class, "update"])->name("company.update");
         });
 
         Route::prefix('job')->group(function () {

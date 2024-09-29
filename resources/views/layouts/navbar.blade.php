@@ -1,7 +1,3 @@
-@php
-$isUser = Auth::check() ? "profile" : "profile.company";
-@endphp
-{{-- {{dd($isUser)}} --}}
 <nav class="sticky top-0 z-[10] flex items-center px-5 justify-between h-[90px] rounded-bl-2xl rounded-br-2xl bg-white">
     <div class="flex-col">
         <h1 class="text-2xl font-bold tracking-wider">JOB SEEKER</h1>
@@ -11,7 +7,6 @@ $isUser = Auth::check() ? "profile" : "profile.company";
         </h1>
         @endif
     </div>
-    {{-- {{dd(Auth::guard('company')->check())}} --}}
     <div class="items-center gap-7 hidden lg:flex">
         @if (Auth::guard('company')->check())
         <a href="{{route('home')}}" class="font-[500] tracking-wider whitespace-nowrap {{request()->is('/') ? "
@@ -19,7 +14,7 @@ $isUser = Auth::check() ? "profile" : "profile.company";
         <a href="{{route('company')}}"
             class="font-[500] hover:border-b border-[rgb(45,156,219)] tracking-wider whitespace-nowrap {{request()->is('company/recruite*') ? "
             border-b-2" : "" }}">Rekrut</a>
-        <a href="{{route('company.profile')}}"
+        <a href="{{route('company.profile', Auth::guard('company')->user()->id)}}"
             class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('company/profile*') ? "
             border-b-2" : "" }} ">Company Profile</a>
       @else
@@ -33,7 +28,7 @@ $isUser = Auth::check() ? "profile" : "profile.company";
             class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('job*') ? "
             border-b-2" : "" }}">Search Job</a>
         @auth
-        <a href="{{route('user.profile')}}"
+        <a href="{{route('user.profile', Auth::user()->id)}}"
             class="font-[500] hover:border-b border-[#2D9CDB] tracking-wider whitespace-nowrap {{request()->is('profile*') ? "
             border-b-2" : "" }} ">My Profile</a>
        @endauth
@@ -60,7 +55,7 @@ $isUser = Auth::check() ? "profile" : "profile.company";
 
             @if (Auth::guard('company')->check() OR Auth::check())
             <div class="flex items-center ml-4 cursor-pointer pr-2 border-r border-black"
-                onclick="window.location.href='{{Auth::check() ? route('user.profile') : route('company.profile')}}'">
+                onclick="window.location.href='{{Auth::check() ? route('user.profile',Auth::user()->id ) : route('company.profile', Auth::guard('company')->user()->id)}}'">
                 <div class="w-[35px] h-[35px] rounded-[100%] overflow-hidden">
                     @if (Auth::user() ?? "")
                     <img src="{{Auth::user()->foto ? asset('./profile_image/' . Auth::user()->foto  ) : "
@@ -122,7 +117,7 @@ $isUser = Auth::check() ? "profile" : "profile.company";
                 class="text-xl font-[600] tracking-wide pb-1  border-[#2D9CDB] {{request()->is('job') ? " border-b-2"
                 : "" }}">Search Job</a>
             @if(Auth::guard('company')->check() OR Auth::check())
-            <a href="{{Auth::check() ? route('user.profile') : route('company.profile')}}"
+            <a href="{{Auth::check() ? route('user.profile', Auth::user()->id) : route('company.profile', Auth::guard('company')->user()->id)}}"
                 class="text-xl font-[600] tracking-wide pb-1">My Profile</a>
             @else
             <a href="{{route('login')}}" class="text-xl font-[600] tracking-wide pb-1">Login</a>
