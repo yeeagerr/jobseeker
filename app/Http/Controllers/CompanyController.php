@@ -24,9 +24,13 @@ class CompanyController extends Controller
 
     public function profile(Company $id)
     {
-        $user = Auth::guard('company')->user();
-        $jobs = Pekerjaan::all();
-        return view('profile.company.profile', compact('user', 'jobs', 'id'));
+        $user = Auth::guard("company")->user();
+        if ($user->id == $id->id) {
+            $jobs = Pekerjaan::where('company_id', $user->id)->get();
+        } else {
+            $jobs = Pekerjaan::all();
+        }
+        return view('profile.company.profile', compact('jobs', 'id'));
     }
 
     public function show_edit()

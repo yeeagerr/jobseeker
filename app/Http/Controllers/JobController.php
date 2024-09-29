@@ -53,4 +53,34 @@ class JobController extends Controller
         ]);
         return redirect()->route('company.profile', Auth::guard("company")->user()->id)->with("success", "Job successfully added!");
     }
+
+    public function show_edit(Pekerjaan $id)
+    {
+        $user = Auth::guard('company')->user();
+        return view("jobs.edit-job", compact("id"));
+    }
+
+    public function update(Pekerjaan $id, Request $request)
+    {
+        $validatedData = $request->validate([
+            'tanggal'      => 'required|date',
+            'pekerjaan'    => 'required|string|max:255',
+            'lokasi'       => 'required|string|max:255',
+            'jam'          => 'required|string|in:full time,part time,half time,satu proyek,kapan saja',
+            'tipe'         => 'required|string|in:setiap hari,fleksibel,shift,kerja di tempat,metode online', //in:full-time,part-time,internship  
+            'tingkat'      => 'required|string|in:pemula,junior,middle,senior,sepuh',
+            'deskripsi'    => 'nullable|string',
+            'gaji'         => 'nullable|string',
+            'requirement'  => 'nullable|string',
+        ]);
+
+        $id->update($validatedData);
+        return redirect()->route('company.profile', Auth::guard("company")->user()->id)->with("success", "Job successfully updated!");
+    }
+
+    public function destroy(Pekerjaan $id)
+    {
+        $id->delete();
+        return redirect()->route('company.profile', Auth::guard("company")->user()->id)->with("success", "Job successfully deleted!");
+    }
 }

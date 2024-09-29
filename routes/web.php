@@ -29,9 +29,12 @@ Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () 
             Route::put("/edit/profile", [CompanyController::class, "update"])->name("company.update");
         });
 
-        Route::prefix('job')->group(function () {
+        Route::prefix('job')->middleware('IsYourJob')->group(function () {
+            Route::get("/edit/{id}", [JobController::class, 'show_edit'])->name("job.edit");
+            Route::put("/edit/{id}", [JobController::class, 'update'])->name("job.update");
             Route::get("/create", [JobController::class, "job"])->name('company.job');
             Route::post("/create", [JobController::class, "store"])->name('company.job_store');
+            Route::delete("/delete/{id}", [JobController::class, "destroy"])->name('job.destroy');
         });
     });
 });

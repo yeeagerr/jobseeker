@@ -19,8 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'no-cache' => App\Http\Middleware\NoCache::class,
             'UserOnly' => App\Http\Middleware\UserOnly::class,
             'CompanyOnly' => App\Http\Middleware\CompanyOnly::class,
-
-
+            'IsYourJob' => App\Http\Middleware\IsYourJob::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

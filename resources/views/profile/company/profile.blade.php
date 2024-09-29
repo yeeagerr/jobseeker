@@ -127,11 +127,15 @@
                             Seluruh Kategori :
                         </h1>
 
-                        <div class="mt-5 flex justify-center items-start gap-5 flex-wrap">
+                        <div class="mt-5 flex justify-center items-stretch gap-5 flex-wrap">
                             <!-- CARD -->
                             @foreach ($jobs as $job)
                             @include('components.cardJob-2')
                             @endforeach
+
+                            @empty($jobs)
+                            <p>This company doesnt have available jobs for now.</p>
+                            @endempty
                             <!-- CARD -->
                         </div>
                     </div>
