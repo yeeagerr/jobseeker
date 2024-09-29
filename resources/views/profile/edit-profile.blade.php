@@ -157,7 +157,5 @@
       document.getElementById("bannerText").innerHTML =
         e.target.files[0]["name"];
     });
-
-
     </script>
 </x-app-layout>

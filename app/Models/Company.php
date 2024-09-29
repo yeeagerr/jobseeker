@@ -43,4 +43,9 @@ class Company extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Pekerjaan::class);
     }
+
+    public function has_review()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

@@ -17,6 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'isVerified' => App\Http\Middleware\UserCompanyVerified::class,
             'guest-only' => App\Http\Middleware\GuestOnly::class,
             'no-cache' => App\Http\Middleware\NoCache::class,
+            'UserOnly' => App\Http\Middleware\UserOnly::class,
+            'CompanyOnly' => App\Http\Middleware\CompanyOnly::class,
 
 
         ]);

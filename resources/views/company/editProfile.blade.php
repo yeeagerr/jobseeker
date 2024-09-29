@@ -130,4 +130,16 @@
             </div>
         </form>
     </main>
+
+    <script>
+        document.getElementById("filebanner").addEventListener("change", (e) => {
+      document.getElementById("bannerText").innerHTML =
+        e.target.files[0]["name"];
+    });
+
+    document.getElementById("filelogo").addEventListener("change", (e) => {
+      document.getElementById("logoText").innerHTML =
+        e.target.files[0]["name"];
+    });
+    </script>
 </x-app-layout>

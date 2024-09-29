@@ -43,8 +43,8 @@
                     </h1>
 
                     <div class="flex items-center justify-start gap-3">
-                        <img src="./images/bintang/bintang5.png" alt="rating" class="mt-1" width="110px" />
-                        <p class="text-[gray]">6.0 total rating from 213 reviews</p>
+                        <img src="{{asset('images/bintang/bintang0.png')}}" alt="rating" class="mt-1" width="110px" />
+                        <p class="text-[gray]">6.0 total rating from {{count($user->has_review)}} reviews</p>
                     </div>
                 </div>
 

@@ -32,8 +32,6 @@
     $route = route('verification.notice');
     @endphp
     <x-modal-popup :message="$message" :link="$route" icon="x" title="Maaf" danger="true" />
-    {{--
-    <x-modal-danger :message="$message" :btnMessage="$btnMessage" :route="$route" /> --}}
     @endif
     @endif
 
