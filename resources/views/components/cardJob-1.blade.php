@@ -1,8 +1,13 @@
 <div class="w-[300px] rounded-3xl p-2 mb-5 bg-white">
     <div class="bg-[#E2ECFE] rounded-3xl p-3">
         <div class="flex justify-between items-center">
+            @php
+            use Carbon\Carbon;
+
+            $formattedDate = Carbon::parse($job->tanggal)->translatedFormat('d M Y');
+            @endphp
             <div class="bg-white p-2 rounded-xl tracking-wide font-bold">
-                {{$job->tanggal}}
+                {{$formattedDate}}
             </div>
             <i class="bg-white p-2 rounded-xl fa-regular fa-bookmark text-black cursor-pointer"></i>
         </div>
