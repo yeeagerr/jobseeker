@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -28,5 +29,15 @@ class ReviewController extends Controller
         ]);
 
         return redirect()->route('company.profile', $CompanyId)->with('success', 'You added your review to this company');
+    }
+
+    public function destroy(Review $id)
+    {
+        if (Auth::user()->id !== $id->user_id) {
+            return redirect()->back()->with('failed', 'You not own this review');
+        }
+        $company_id = $id->company_id;
+        $id->delete();
+        return redirect()->route('company.profile', $company_id)->with('success', 'Your review successfully deleted!');
     }
 }

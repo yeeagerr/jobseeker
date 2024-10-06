@@ -25,6 +25,7 @@ Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () 
 
         Route::prefix('review')->group(function () {
             Route::post('create/{CompanyId}', [ReviewController::class, 'store'])->name('review.store');
+            Route::delete('delete/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
         });
     });
 
