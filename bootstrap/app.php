@@ -20,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'UserOnly' => App\Http\Middleware\UserOnly::class,
             'CompanyOnly' => App\Http\Middleware\CompanyOnly::class,
             'IsYourJob' => App\Http\Middleware\IsYourJob::class,
+            'PreventDuplicateSubmit' => App\Http\Middleware\PreventDuplicateSubmit::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
