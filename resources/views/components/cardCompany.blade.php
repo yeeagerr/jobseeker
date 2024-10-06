@@ -24,8 +24,13 @@
             </div>
         </div>
 
-        <img src="./images/bintang/bintang4.png" alt="bintangrating" width="100" class="block" />
-        <p class="mt-2">4.0 total rating from 213 reviews</p>
+        @php
+        $ratingOverall = $companiesWithRatings[0]['averageRating'];
+        @endphp
+        <img src="{{asset('/images/bintang/bintang' . $ratingOverall . '.png' )}}" alt="bintangrating" width="100"
+            class="block" />
+        <p class="mt-2">{{$ratingOverall}}.0 total rating from
+            {{count($company->has_review)}} reviews</p>
     </div>
 
     <div class="flex justify-end items-center mt-4">

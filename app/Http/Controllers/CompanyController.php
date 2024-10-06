@@ -20,7 +20,26 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::all();
-        return view('company.index', compact('companies'));
+        $companiesWithRatings = [];
+        foreach ($companies as $company) {
+            $averageRating = 0; // Default rating (misalnya 0 atau 1, sesuai preferensi)
+            // dd($company->has_review[0]->sum('rating'));
+            $totalReviews = $company->has_review->count(); // Menghitung jumlah review
+
+
+            if ($totalReviews > 0) {
+                $totalRating = $company->has_review[0]->sum('rating'); // Menghitung total rating
+                $averageRating = $totalRating / $totalReviews; // Menghitung rata-rata rating
+
+                // Pastikan rating berada dalam rentang 1 sampai 5
+                $averageRating = min(max($averageRating, 1), 5);
+            }
+            $companiesWithRatings[] = [
+                'company' => $company,
+                'averageRating' => $averageRating
+            ];
+        }
+        return view('company.index', compact('companies', 'companiesWithRatings'));
     }
 
     public function profile(Company $id)
