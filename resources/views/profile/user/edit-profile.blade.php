@@ -70,9 +70,10 @@
                     <p class="font-bold ml-3 text-lg mt-2">Keahlian yang ditambah</p>
                     <div class="flex items-center gap-3 flex-wrap" id="skillTambah">
                         @foreach ($user->skills ?? [] as $skill)
-                        <div class=" relative h-[45px] w-[150px] flex items-center font-bold border-2 shadow-2xl mt-2 rounded-[50px] bg-[#F4F5F6]"
-                            id="skill<?= $skill ?>"><input type="text" readonly="true"
-                                class="relative w-[95%] text-center text-black cursor-default outline-none bg-transparent"
+                        <div class=" relative h-[45px] max-w-[150px] flex items-center font-bold border-2 shadow-2xl mt-2 rounded-[50px] bg-[#F4F5F6]"
+                            id="skill<?= $skill ?>">
+                            <input type="text" readonly="true"
+                                class="relative w-[95%] text-center truncate text-black cursor-default outline-none bg-transparent"
                                 placeholder="<?= $skill ?>" value="<?= $skill ?>" name="skills[]">
                             <p class="absolute right-5 cursor-pointer cancelbtn" id="<?= $skill ?>">X</p>
                         </div>
