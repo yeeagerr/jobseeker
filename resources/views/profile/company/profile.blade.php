@@ -27,8 +27,10 @@
                     </h1>
 
                     <div class="flex items-center justify-start gap-3">
-                        <img src="{{asset('images/bintang/bintang0.png')}}" alt="rating" class="mt-1" width="110px" />
-                        <p class="text-[gray]">6.0 total rating from {{count($id->has_review)}} reviews</p>
+                        <img src="{{asset('images/bintang/bintang'. $averageRating .'.png')}}" alt="rating" class="mt-1"
+                            width="110px" />
+                        <p class="text-[gray]">{{$averageRating . ".0"}} total rating from {{count($id->has_review)}}
+                            reviews</p>
                     </div>
                 </div>
 
@@ -39,6 +41,12 @@
                         Edit Profile Perusahaan
                     </button>
                 </div>
+                @else
+
+                @empty($IsRating)
+                @include('components.modal-review')
+                @endempty
+
                 @endif
             </div>
             <div class="mt-5 flex flex-col">
@@ -80,109 +88,16 @@
 
                     </div>
                     <!-- ABOUT -->
-                    <div class="mt-5 hidden peer-checked/about:block peer-checked/jobs:hidden">
-                        <h1 class="text-2xl font-bold tracking-wide">
-                            Preview Perusahaan
-                        </h1>
-                        <div class="flex mt-3">
-                            <p class="font-bold text-sm md:text-lg tracking-wider w-[150px] md:w-[250px]">
-                                Webiste
-                            </p>
-                            <p class="text-sm md:text-lg">: {{$id->link}}</p>
-                        </div>
-                        <div class="flex">
-                            <p class="font-bold text-sm md:text-lg tracking-wider w-[150px] md:w-[250px]">
-                                Industry
-                            </p>
-                            <p class="text-sm md:text-lg">: {{$id->industri}}</p>
-                        </div>
-                        <div class="flex">
-                            <p class="font-bold text-sm md:text-lg tracking-wider w-[150px] md:w-[250px]">
-                                Company Size
-                            </p>
-                            <p class="text-sm md:text-lg">: {{$id->size}}</p>
-                        </div>
+                    @include('profile.company.partials.about')
 
-                        <div class="flex">
-                            <p class="font-bold text-sm md:text-lg tracking-wider w-[150px] md:w-[250px]">
-                                Primary Location
-                            </p>
-                            <p class="text-sm md:text-lg w-[60%] h-auto">
-                                : {{$id->lokasi}}
-                            </p>
-                        </div>
-
-                        <p class="text-lg mt-5">
-                            {{$id->deskripsi}}
-                        </p>
-                    </div>
                     <!-- ABOUT -->
 
                     <!-- JOBS -->
-                    <div class="mt-5 hidden peer-checked/jobs:block peer-checked/about:hidden">
-                        <h1 class="text-2xl font-bold tracking-wide">
-                            Berberapa Pekerjaan
-                        </h1>
-                        <h1 class="text-xl font-bold flex justify-end text-[#114FA9] ">
-                            Seluruh Kategori :
-                        </h1>
-
-                        <div class="mt-5 flex justify-center items-stretch gap-5 flex-wrap">
-                            <!-- CARD -->
-                            @foreach ($jobs as $job)
-                            @include('components.cardJob-2')
-                            @endforeach
-
-                            @empty($jobs)
-                            <p>This company doesnt have available jobs for now.</p>
-                            @endempty
-                            <!-- CARD -->
-                        </div>
-                    </div>
+                    @include('profile.company.partials.jobs')
                     <!-- JOBS -->
 
                     <!--review-->
-                    <div class="mt-5 hidden peer-checked/jobs:hidden  peer-checked/review:block">
-                        <p class="text-end mr-5 tracking-wider mt-10">
-                            Di sortir :
-                            <span class="font-bold">
-                                paling membantu
-                            </span>
-                        </p>
-                        <h3 class="text-2xl tracking-wide">
-                            Showing <span class="font-bold">6</span> Reviews sorted by most recent
-                        </h3>
-                        <h1 class="text-3xl font-bold tracking-wider mr-5 mt-10 text-[#133240]">
-                            BEBERAPA FEEDBACK
-                        </h1>
-                        <h4 class="text-l tracking-wider mr-5 mt-5 text-[#133240]">
-                            Your trust is our main concern so these ratings for
-                            <span class="font-bold">Google Group</span>
-                            are shared as-is from employees in line with our community guidelines
-                        </h4>
-                        <div class="w-[300px] h-[350px] rounded overflow-hidden shadow-lg p-4 border mt-10 ml-10">
-                            <div class="flex items-center mb-4">
-                                <img class="w-[80px] h-[80px] mb-2 mr-2" src="https://via.placeholder.com/48"
-                                    alt="Avatar">
-                                <div class=" w-[150px] ml-10">
-                                    <img src="./images/bintang/bintang4.png" alt="Bintang">
-                                </div>
-                            </div>
-                            <h2 class="font-semibold text-2xl">Floyd Miles
-                            </h2>
-                            <button class="bg-red-500 hover:bg-red-600 text-white font-semi py-2 px-4 rounded-3xl mt-3">
-                                Delete
-                            </button>
-                            <p class="text-gray-700 mt-3">
-                                Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
-                                officia
-                                consequat duis enim velit mollit.
-                            </p>
-                        </div>
-
-                    </div>
-
-
+                    @include('profile.company.partials.reviews')
                     <!--review-->
 
                     <!--list pendaftar-->

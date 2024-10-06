@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Pekerjaan;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +26,24 @@ class CompanyController extends Controller
     public function profile(Company $id)
     {
         $jobs = Pekerjaan::where('company_id', $id->id)->get();
-        return view('profile.company.profile', compact('jobs', 'id'));
+        $reviews = Review::where('company_id', $id->id)->paginate(6);
+        $IsRating = Review::where([
+            ['user_id', Auth::user()->id],
+            ['company_id', $id->id]
+        ])->first();
+
+        $totalReviews = $reviews->count(); // Menghitung jumlah ulasan
+        $averageRating = 0; // atau bisa juga 1, tergantung preferensi kamu
+
+        if ($totalReviews > 0) {
+            $totalRating = $reviews->sum('rating'); // Menghitung total rating
+            $averageRating = $totalRating / $totalReviews; // Menghitung rata-rata rating
+
+            // Memastikan rating berada dalam rentang 1 sampai 5
+            $averageRating = min(max($averageRating, 1), 5);
+        }
+
+        return view('profile.company.profile', compact('jobs', 'id', 'reviews', 'IsRating', 'averageRating'));
     }
 
     public function show_edit()

@@ -37,10 +37,12 @@
 
     {{-- MODAL IF THERES FLASH MESSAGE --}}
     @if (session('success'))
-    @php
-    $messageFlash = session("success")
-    @endphp
-    <x-modal-popup part="flash" title="Success" icon="check" :message="$messageFlash" />
+    <x-modal-popup part="flash" title="Success" icon="check" :message="session('success')" />
+    @endif
+
+    @if (session('failed'))
+    <x-modal-popup part="flash" title="Something Went Wrong!" icon="x" danger="true" :message="session('failed')" />
+
     @endif
 
 
