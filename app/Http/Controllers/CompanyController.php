@@ -47,7 +47,7 @@ class CompanyController extends Controller
         $jobs = Pekerjaan::where('company_id', $id->id)->get();
         $reviews = Review::where('company_id', $id->id)->paginate(6);
         $IsRating = Review::where([
-            ['user_id', Auth::user()->id],
+            ['user_id', Auth::user()->id ?? "null"],
             ['company_id', $id->id]
         ])->first();
 

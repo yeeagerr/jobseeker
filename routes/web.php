@@ -15,18 +15,21 @@ Route::get("/job", [JobController::class, 'index'])->name('job');
 
 
 Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () {
-    Route::get("user/profile/{id}", [UserController::class, 'profile'])->name('user.profile');
     Route::get("company/profile/{id}", [CompanyController::class, "profile"])->name('company.profile');
     Route::get("job/detail/{id}", [JobController::class, 'detail'])->name('detail.job');
 
-    Route::prefix("user")->middleware('UserOnly')->group(function () {
-        Route::get('/edit/profile', [UserController::class, 'show_edit'])->name('profile.edit');
-        Route::patch('/edit/profile', [UserController::class, 'update'])->name('profile.update')->middleware('PreventDuplicateSubmit');
+    Route::prefix("user")->group(function () {
+        Route::get("/profile/{id}", [UserController::class, 'profile'])->name('user.profile');
 
-        Route::prefix('review')->group(function () {
-            Route::post('create/{CompanyId}', [ReviewController::class, 'store'])->name('review.store');
-            Route::delete('delete/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
+        Route::middleware('UserOnly')->group(function () {
+            Route::get('/edit/profile', [UserController::class, 'show_edit'])->name('profile.edit');
+            Route::patch('/edit/profile', [UserController::class, 'update'])->name('profile.update')->middleware('PreventDuplicateSubmit');
+
+            Route::prefix('review')->group(function () {
+                Route::post('create/{CompanyId}', [ReviewController::class, 'store'])->name('review.store');
+            });
         });
+        Route::delete('review/delete/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
     });
 
     Route::middleware("CompanyOnly")->group(function () {
@@ -35,12 +38,15 @@ Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () 
             Route::put("/edit/profile", [CompanyController::class, "update"])->name("company.update");
         });
 
-        Route::prefix('job')->middleware('IsYourJob')->group(function () {
-            Route::get("/edit/{id}", [JobController::class, 'show_edit'])->name("job.edit");
-            Route::put("/edit/{id}", [JobController::class, 'update'])->name("job.update");
+        Route::prefix('job')->group(function () {
             Route::get("/create", [JobController::class, "job"])->name('company.job');
             Route::post("/create", [JobController::class, "store"])->name('company.job_store');
-            Route::delete("/delete/{id}", [JobController::class, "destroy"])->name('job.destroy');
+
+            Route::middleware('IsYourJob')->group(function () {
+                Route::delete("/delete/{id}", [JobController::class, "destroy"])->name('job.destroy');
+                Route::put("/edit/{id}", [JobController::class, 'update'])->name("job.update");
+                Route::get("/edit/{id}", [JobController::class, 'show_edit'])->name("job.edit");
+            });
         });
     });
 });

@@ -33,8 +33,10 @@ class ReviewController extends Controller
 
     public function destroy(Review $id)
     {
-        if (Auth::user()->id !== $id->user_id) {
-            return redirect()->back()->with('failed', 'You not own this review');
+        if (Auth::check()) {
+            if (Auth::user()->id ?? "" !== $id->user_id) {
+                return redirect()->back()->with('failed', 'You not own this review');
+            }
         }
         $company_id = $id->company_id;
         $id->delete();

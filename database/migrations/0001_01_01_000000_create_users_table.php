@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->string("alamat")->nullable();
             $table->json('pengalaman')->nullable();
+            $table->text("foto")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
