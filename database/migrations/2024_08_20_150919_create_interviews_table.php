@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('interviews', function (Blueprint $table) {
             $table->id();
             $table->foreignId("company_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId("user_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->json('qna');
-            $table->text('resume')->nullable();
+            $table->json('pertanyaan');
+            $table->text(column: 'resume')->nullable();
             $table->timestamps();
         });
     }

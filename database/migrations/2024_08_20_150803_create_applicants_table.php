@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("job_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("user_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->json('qna');
             $table->timestamps();
         });
     }
