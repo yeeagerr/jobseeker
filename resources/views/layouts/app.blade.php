@@ -11,7 +11,7 @@
     {{-- OTHERS --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Fonts -->
     {{--
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -80,6 +80,10 @@
 
 @if (request()->is('company/profile*') AND Auth::guard('company')->check())
 <script src="{{asset('resources/js/profileCompany.js')}}"></script>
+@endif
+
+@if (request()->is('job'))
+<script src="{{asset('/resources/js/filter.js')}}"></script>
 @endif
 
 </html>

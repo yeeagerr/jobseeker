@@ -7,12 +7,13 @@
                 Cari Perusahaan yang cocok untuk Anda
             </h1>
 
-            <form action="" class="bg-white flex items-center px-3 h-[50px] rounded-xl">
+            <form action="{{request()->url()}}" method="GET"
+                class="bg-white flex items-center px-3 h-[50px] rounded-xl">
                 <button type="submit">
                     <i class="fa-solid fa-magnifying-glass text-2xl"></i>
                 </button>
-                <input type="search" placeholder="Cari Perusahaan Yuk"
-                    class="ml-2 h-full w-full ml-5 font-bold text-lg focus:outline-none" />
+                <input type="search" name="SearchCompany" placeholder="Cari Perusahaan Yuk"
+                    class="h-full w-full ml-5 font-bold text-lg focus:outline-none" />
             </form>
         </div>
 

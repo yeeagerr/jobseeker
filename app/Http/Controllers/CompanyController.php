@@ -20,7 +20,12 @@ class CompanyController extends Controller
 
     public function index()
     {
-        $companies = Company::all();
+        if (request()->input('SearchCompany')) {
+            $keyword = e(request()->SearchCompany);
+            $companies = Company::where("nama", "like", "%$keyword%")->get();
+        } else {
+            $companies = Company::all();
+        }
         $companiesWithRatings = [];
         foreach ($companies as $company) {
             $averageRating = 0; // Default rating (misalnya 0 atau 1, sesuai preferensi)

@@ -1,11 +1,11 @@
+@foreach ($jobs as $job)
+
 <div class="w-[300px] rounded-3xl p-2 mb-5 bg-white">
     <div class="bg-[#E2ECFE] rounded-3xl p-3 h-[80%] flex flex-col justify-between">
         <div>
             <div class="flex justify-between items-center">
                 @php
-                use Carbon\Carbon;
-
-                $formattedDate = Carbon::parse($job->tanggal)->translatedFormat('d M Y');
+                $formattedDate = \Carbon\Carbon::parse($job->tanggal)->translatedFormat('d M Y');
                 @endphp
                 <div class="bg-white p-2 rounded-xl tracking-wide font-bold">
                     {{$formattedDate}}
@@ -79,3 +79,4 @@
         </button>
     </div>
 </div>
+@endforeach

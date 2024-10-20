@@ -8,10 +8,24 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
         $jobs = Pekerjaan::all();
-        return view('jobs.index', compact('jobs'));
+        return view('jobs.index', compact(var_name: 'jobs'));
+    }
+
+    public function filter_jobs(Request $request)
+    {
+        if (count($request->jam) > 1) {
+            $pekerjaans = Pekerjaan::with('company')->whereIn('jam', $request->jam)->get();
+        } else {
+            $pekerjaans = Pekerjaan::with('company')->get();
+        }
+
+        $html = view('components.cardJob-1', ['jobs' => $pekerjaans])->render();
+
+        return response()->json(['html' => $html]);
     }
 
     public function detail(Pekerjaan $id)
@@ -56,7 +70,7 @@ class JobController extends Controller
 
     public function show_edit(Pekerjaan $id)
     {
-        $user = Auth::guard('company')->user();
+        // $user = Auth::guard('company')->user();
         return view("jobs.edit-job", compact("id"));
     }
 

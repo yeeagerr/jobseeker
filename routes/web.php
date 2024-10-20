@@ -32,6 +32,8 @@ Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () 
             Route::post("interview/{id}", [InterviewController::class, "index"])->name("interview");
 
             Route::post('applicant/{id}', [ApplicantController::class, 'store'])->name('applicant.store');
+
+            Route::get("/job/filter", [JobController::class, "filter_jobs"])->name('filter.job');
         });
 
         Route::delete('review/delete/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
