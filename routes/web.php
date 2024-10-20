@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get("/job", [JobController::class, 'index'])->name('job');
+Route::get("user/job/filter", [JobController::class, "filter_jobs"])->name('filter.job');
 
 
 Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () {
@@ -34,8 +35,6 @@ Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () 
             Route::get("interview/{id}", [InterviewController::class, "index"])->name("interview");
 
             Route::post('applicant/{id}', [ApplicantController::class, 'store'])->name('applicant.store');
-
-            Route::get("/job/filter", [JobController::class, "filter_jobs"])->name('filter.job');
         });
     });
 

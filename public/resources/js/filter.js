@@ -1,6 +1,5 @@
 $(document).ready(function () {
     $(".filter_checkbox").click(function () {
-        // Ambil setiap kategori filter sebagai array
         let jam = getCheckedValues("jam_checkbox");
         let tingkat = getCheckedValues("tingkat_checkbox");
         let tipe = getCheckedValues("tipe_checkbox");
