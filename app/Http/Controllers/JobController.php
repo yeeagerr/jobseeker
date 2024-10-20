@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Applicant;
 use App\Models\Pekerjaan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -30,7 +31,8 @@ class JobController extends Controller
 
     public function detail(Pekerjaan $id)
     {
-        return view('jobs.detail-job', compact('id'));
+        $isApply = Applicant::where("user_id", Auth::user()->id)->where('pekerjaan_id', $id->id)->first();
+        return view('jobs.detail-job', compact('id', 'isApply'));
     }
 
     public function job()

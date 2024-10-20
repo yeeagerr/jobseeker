@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Applicant;
 use App\Models\Company;
 use App\Models\Interview;
 use App\Models\Pekerjaan;
@@ -15,6 +16,11 @@ class InterviewController extends Controller
      */
     public function index(Pekerjaan $id)
     {
+        $isApply = Applicant::where("user_id", Auth::user()->id)->where('pekerjaan_id', $id->id)->first();
+
+        if ($isApply) {
+            return redirect()->route('home')->with('failed', 'Kamu sudah mengajukan pekerjaan di sini !');
+        }
         return view('company.interview.index', compact('id'));
     }
 

@@ -12,10 +12,10 @@ class ApplicantController extends Controller
 {
     public function store(Pekerjaan $id, Request $request)
     {
-        // $request->validate([
-        //     'qna' => 'required|array',
-        //     'resume' => 'nullable'
-        // ]);
+        $request->validate([
+            'qna' => 'required|array',
+            'resume' => 'nullable'
+        ]);
 
 
         if ($request->hasFile('resume')) {

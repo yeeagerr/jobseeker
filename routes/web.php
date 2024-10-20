@@ -18,7 +18,7 @@ Route::get("/job", [JobController::class, 'index'])->name('job');
 
 Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () {
     Route::get("company/profile/{id}", [CompanyController::class, "profile"])->name('company.profile');
-    Route::get("job/detail/{id}", [JobController::class, 'detail'])->name('detail.job');
+    Route::get("job/detail/{id}", [JobController::class, 'detail'])->middleware('UserOnly')->name('detail.job');
 
     Route::prefix("user")->group(function () {
         Route::get("/profile/{id}", [UserController::class, 'profile'])->name('user.profile');
@@ -32,8 +32,6 @@ Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () 
             Route::post('review/create/{CompanyId}', [ReviewController::class, 'store'])->name('review.store');
 
             Route::get("interview/{id}", [InterviewController::class, "index"])->name("interview");
-
-            Route::post("interview/{id}", [InterviewController::class, "index"])->name("interview");
 
             Route::post('applicant/{id}', [ApplicantController::class, 'store'])->name('applicant.store');
 
