@@ -18,8 +18,20 @@ class JobController extends Controller
 
     public function filter_jobs(Request $request)
     {
-        if (count($request->jam) > 1) {
-            $pekerjaans = Pekerjaan::with('company')->whereIn('jam', $request->jam)->get();
+        $query = Pekerjaan::with('company');
+
+        if (count($request->jam) > 1 or count($request->tingkat) > 1 or count($request->tipe) > 1) {
+            if (count($request->jam) > 1) {
+                $query->whereIn('jam', $request->jam);
+            }
+            if (count($request->tingkat) > 1) {
+                $query->whereIn('tingkat', $request->tingkat);
+            }
+            if (count($request->tipe) > 1) {
+                $query->whereIn('tipe', $request->tipe);
+            }
+
+            $pekerjaans = $query->get();
         } else {
             $pekerjaans = Pekerjaan::with('company')->get();
         }

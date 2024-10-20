@@ -74,36 +74,36 @@
                     <p class="text-[gray] text-lg font-[600]">Pilih jam kerja</p>
 
                     <div class="flex items-center mt-4">
-                        <input type="checkbox" name="jam"
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] jam_checkbox bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] jam_checkbox filter_checkbox bg-no-repeat bg-center bg-cover outline-none mr-3"
                             value="full time" />
                         <p class="font-bold">Full Time</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name="jam"
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] jam_checkbox bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] jam_checkbox filter_checkbox bg-no-repeat bg-center bg-cover outline-none mr-3"
                             value="part time" />
                         <p class="font-bold">Part Time</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name="jam"
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] jam_checkbox bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] jam_checkbox filter_checkbox bg-no-repeat bg-center bg-cover outline-none mr-3"
                             value="half time" />
                         <p class="font-bold">Half Time</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name="jam"
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] jam_checkbox bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] jam_checkbox filter_checkbox bg-no-repeat bg-center bg-cover outline-none mr-3"
                             value="sekali project" />
                         <p class="font-bold">Sekali Project</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name="jam"
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] jam_checkbox bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] jam_checkbox filter_checkbox bg-no-repeat bg-center bg-cover outline-none mr-3"
                             value="kapan saja" />
                         <p class="font-bold">Kapan Saja</p>
                     </div>
@@ -113,36 +113,36 @@
                     <p class="text-[gray] text-lg font-[600]">Tipe Pekerjaan</p>
 
                     <div class="flex items-center mt-4">
-                        <input type="checkbox" name=""
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter" value="setiap hari"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] filter_checkbox tipe_checkbox border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
                             id="" />
                         <p class="font-bold">Setiap Hari</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name=""
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter" value="fleksibel"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] filter_checkbox tipe_checkbox border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
                             id="" />
                         <p class="font-bold">Fleksibel</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name=""
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter" value="shift"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] filter_checkbox tipe_checkbox border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
                             id="" />
                         <p class="font-bold">Shift</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name=""
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter" value="kerja di tempat"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] filter_checkbox tipe_checkbox border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
                             id="" />
                         <p class="font-bold">Kerja Di Tempat</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name=""
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter" value="metode online"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] filter_checkbox tipe_checkbox border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
                             id="" />
                         <p class="font-bold">Kerja Online</p>
                     </div>
@@ -154,36 +154,36 @@
                     </p>
 
                     <div class="flex items-center mt-4">
-                        <input type="checkbox" name=""
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter" value="pemula"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] filter_checkbox tingkat_checkbox border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
                             id="" />
                         <p class="font-bold">Pemula</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name=""
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter" value="junior"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] filter_checkbox tingkat_checkbox border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
                             id="" />
                         <p class="font-bold">Junior</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name=""
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter" value="middle"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] filter_checkbox tingkat_checkbox border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
                             id="" />
                         <p class="font-bold">Middle</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name=""
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter" value="senior"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] filter_checkbox tingkat_checkbox border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
                             id="" />
                         <p class="font-bold">Senior</p>
                     </div>
 
                     <div class="flex items-center mt-2">
-                        <input type="checkbox" name=""
-                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
+                        <input type="checkbox" name="filter" value="sepuh"
+                            class="rounded-lg appearance-none checked:bg-[#CEDEF7] filter_checkbox tingkat_checkbox border-[#CEDEF7] border-2 h-[25px] w-[25px] checked:bg-[url('https://icons.veryicon.com/png/o/miscellaneous/template-4/checklist-11.png')] bg-no-repeat bg-center bg-cover outline-none mr-3"
                             id="" />
                         <p class="font-bold">Sepuh</p>
                     </div>

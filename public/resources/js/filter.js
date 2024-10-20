@@ -1,16 +1,19 @@
 $(document).ready(function () {
-    $(".jam_checkbox").click(function () {
-        let jam = [""];
+    $(".filter_checkbox").click(function () {
+        // Ambil setiap kategori filter sebagai array
+        let jam = getCheckedValues("jam_checkbox");
+        let tingkat = getCheckedValues("tingkat_checkbox");
+        let tipe = getCheckedValues("tipe_checkbox");
 
-        // Ambil semua checkbox yang dicentang
-        $(".jam_checkbox:checked").each(function () {
-            jam.push($(this).val());
-        });
-
+        // Lakukan AJAX request dengan semua filter
         $.ajax({
             url: "/user/job/filter",
             method: "GET",
-            data: { jam: jam },
+            data: {
+                jam: jam,
+                tingkat: tingkat,
+                tipe: tipe,
+            },
             success: function (response) {
                 $("#list_job").empty(); // Kosongkan div sebelum render ulang
                 if (response.html) {
@@ -29,4 +32,13 @@ $(document).ready(function () {
             },
         });
     });
+
+    // Fungsi untuk mendapatkan nilai checkbox yang dicentang dari kategori tertentu
+    function getCheckedValues(className) {
+        let values = [""];
+        $("." + className + ":checked").each(function () {
+            values.push($(this).val());
+        });
+        return values;
+    }
 });
