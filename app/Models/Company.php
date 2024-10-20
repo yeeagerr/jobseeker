@@ -39,6 +39,10 @@ class Company extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    protected $cast = [
+        'pertanyaan' => 'array'
+    ];
+
     public function has_jobs()
     {
         return $this->hasMany(Pekerjaan::class);
@@ -47,5 +51,15 @@ class Company extends Authenticatable implements MustVerifyEmail
     public function has_review()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function has_interview()
+    {
+        return $this->hasOne(Interview::class);
+    }
+
+    public function has_applicant()
+    {
+        return $this->hasMany(Applicant::class);
     }
 }

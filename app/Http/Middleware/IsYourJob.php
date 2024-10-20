@@ -18,8 +18,11 @@ class IsYourJob
     public function handle(Request $request, Closure $next): Response
     {
         $id = $request->route('id');
-        $job = Pekerjaan::find($id)->first();
+        $job = Pekerjaan::find($id);
         $user = Auth::guard('company')->user();
+        if (!isset($job)) {
+            return redirect()->route('company.profile', $user->id);
+        }
 
         if ($job->company->id == $user->id) {
             return $next($request);

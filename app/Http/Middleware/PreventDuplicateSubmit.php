@@ -18,7 +18,11 @@ class PreventDuplicateSubmit
     {
         // Cek apakah request sudah di-submit sebelumnya dalam session
         if (session()->has(key: 'last_submission_time') && session('last_submission_time') + 5 > time()) {
-            return redirect()->route('user.profile', Auth::user()->id)->with('success', 'Your account successfully updated');
+            if (Auth::check()) {
+                return redirect()->route('user.profile', Auth::user()->id)->with('success', 'Duplicate Request!');
+            } else {
+                return redirect()->route('company.profile', Auth::guard('company')->user()->id)->with('success', 'Duplicate Request!');
+            }
         }
 
         // Simpan waktu submit di session

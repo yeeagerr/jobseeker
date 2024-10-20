@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\CompanyAuthContoller;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InterviewController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
@@ -25,10 +27,13 @@ Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () 
             Route::get('/edit/profile', [UserController::class, 'show_edit'])->name('profile.edit');
             Route::patch('/edit/profile', [UserController::class, 'update'])->name('profile.update')->middleware('PreventDuplicateSubmit');
 
-            Route::prefix('review')->group(function () {
-                Route::post('create/{CompanyId}', [ReviewController::class, 'store'])->name('review.store');
-            });
+            Route::post('review/create/{CompanyId}', [ReviewController::class, 'store'])->name('review.store');
+            Route::get("interview/{id}", [InterviewController::class, "index"])->name("interview");
+            Route::post("interview/{id}", [InterviewController::class, "index"])->name("interview");
+
+            Route::post('applicant/{id}', [ApplicantController::class, 'store'])->name('applicant.store');
         });
+
         Route::delete('review/delete/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
     });
 
@@ -40,13 +45,18 @@ Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () 
 
         Route::prefix('job')->group(function () {
             Route::get("/create", [JobController::class, "job"])->name('company.job');
-            Route::post("/create", [JobController::class, "store"])->name('company.job_store');
+            Route::post("/create", [JobController::class, "store"])->name('company.job_store')->middleware('PreventDuplicateSubmit');;
 
             Route::middleware('IsYourJob')->group(function () {
-                Route::delete("/delete/{id}", [JobController::class, "destroy"])->name('job.destroy');
-                Route::put("/edit/{id}", [JobController::class, 'update'])->name("job.update");
+                Route::delete("/delete/{id}", [JobController::class, "destroy"])->name('job.destroy')->middleware('PreventDuplicateSubmit');;
+                Route::put("/edit/{id}", [JobController::class, 'update'])->name("job.update")->middleware('PreventDuplicateSubmit');;
                 Route::get("/edit/{id}", [JobController::class, 'show_edit'])->name("job.edit");
             });
+        });
+
+        Route::prefix("interview")->group(function () {
+            Route::get("/edit", [InterviewController::class, "show"])->name("interview.edit");
+            Route::put("/edit/{id}", [InterviewController::class, "update"])->name("interview.update");
         });
     });
 });

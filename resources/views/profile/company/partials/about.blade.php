@@ -1,4 +1,4 @@
-<div class="mt-5 hidden peer-checked/about:block peer-checked/jobs:hidden">
+<div class="mt-5 hidden peer-checked/about:block ">
     <h1 class="text-2xl font-bold tracking-wide">
         Preview Perusahaan
     </h1>

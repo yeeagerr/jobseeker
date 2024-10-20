@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string("lokasi");
             $table->string("size");
             $table->string("industri");
-            $table->text('logo');
-            $table->text('banner');
+            $table->text('logo')->nullable();
+            $table->text('banner')->nullable();
             $table->text('link');
             $table->string("password");
             $table->timestamp('email_verified_at')->nullable();

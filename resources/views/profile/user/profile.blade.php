@@ -35,7 +35,6 @@
                             <div
                                 class="py-1 cursor-default transform hover:bg-[#4567D6] hover:text-white transition px-4 border-[#4567D6] border-2 rounded-2xl">
                                 {{$skill}}
-
                             </div>
                             @endforeach
 

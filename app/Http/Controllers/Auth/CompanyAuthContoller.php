@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\Interview;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,16 +43,35 @@ class CompanyAuthContoller extends Controller
 
         $validate['password'] = $password;
 
-        $logo = $request->file('logo')->getClientOriginalName() ?? "";
-        $banner = $request->file('banner')->getClientOriginalName() ?? "";
+        if ($request->hasFile('logo')) {
+            $logo = $request->file('logo')->getClientOriginalName();
+            $request->file('logo')->move(public_path('company.logo'), $logo);
+        } else {
+            $logo = null;
+        }
 
-        $request->file('logo')->move(public_path('company.logo'), $logo);
-        $request->file('banner')->move(public_path('company.banner'), $banner);
+        if ($request->hasFile('banner')) {
+            $banner = $request->file('banner')->getClientOriginalName();
+            $request->file('banner')->move(public_path('company.banner'), $banner);
+        } else {
+            $banner = null;
+        }
+
 
         $validate['logo'] = $logo;
         $validate['banner'] = $banner;
 
         $company = Company::create($validate);
+
+        $pertanyaan = [
+            'Ceritakan tentang diri anda',
+            'Alasan mengapa bapak/ibu mendaftar di perusahaan kami',
+            'Apa pengalaman dan skill kamu di bidang ini ?'
+        ];
+        Interview::create([
+            'company_id' => $company->id,
+            'pertanyaan' => json_encode($pertanyaan),
+        ]);
 
         event(new Registered($company));
 

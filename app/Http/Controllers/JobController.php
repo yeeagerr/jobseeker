@@ -78,9 +78,10 @@ class JobController extends Controller
         return redirect()->route('company.profile', Auth::guard("company")->user()->id)->with("success", "Job successfully updated!");
     }
 
-    public function destroy(Pekerjaan $id)
+    public function destroy($id)
     {
-        $id->delete();
+        $job = Pekerjaan::find($id);
+        $job->delete();
         return redirect()->route('company.profile', Auth::guard("company")->user()->id)->with("success", "Job successfully deleted!");
     }
 }

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId("company_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->json('pertanyaan');
-            $table->text(column: 'resume')->nullable();
             $table->timestamps();
         });
     }

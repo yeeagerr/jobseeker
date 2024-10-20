@@ -62,7 +62,7 @@
             </div>
 
             <div class="flex justify-center mb-3">
-                <button
+                <button onclick="window.location.href = '{{route('interview', $id->id)}}'"
                     class="hover:bg-[#4567D6] border-2 hover:text-white transition mt-4 border-[#4567D6] px-3 py-1 font-bold tracking-wider rounded-2xl">
                     Lamar Di Lowongan Ini
                 </button>

@@ -68,7 +68,7 @@
                             Reviews
                         </p>
                     </label>
-                    <label for="list">
+                    <label for="pelamar">
                         <p
                             class="font-bold text-lg md:text-2xl tracking-wide w-[90px] md:w-[150px] cursor-pointer whitespace-nowrap">
                             list pendaftar
@@ -80,9 +80,10 @@
                     <input type="radio" name="radioTipe" id="jobs" class="peer/jobs hidden" />
                     <input type="radio" name="radioTipe" id="review" class="peer/review hidden" />
                     <input type="radio" name="radioTipe" id="list" class="peer/list hidden" />
+                    <input type="radio" name="radioTipe" id="pelamar" class="peer/pelamar hidden" />
 
                     <div
-                        class="absolute h-[10px] w-[65px] rounded-2xl bg-[#22336A] top-[-4px] transform peer-checked/about:translate-x-[0px] peer-checked/jobs:translate-x-[85px] md:peer-checked/jobs:translate-x-[145px] peer-checked/review:translate-x-[180px] md:peer-checked/review:translate-x-[315px] transition">
+                        class="absolute h-[10px] w-[65px] rounded-2xl bg-[#22336A] top-[-4px] transform peer-checked/about:translate-x-[0px] peer-checked/jobs:translate-x-[85px] md:peer-checked/jobs:translate-x-[145px] peer-checked/review:translate-x-[180px] md:peer-checked/review:translate-x-[315px] peer-checked/pelamar:translate-x-[485px] transition">
                     </div>
                     <div class="">
 
@@ -101,6 +102,7 @@
                     <!--review-->
 
                     <!--list pendaftar-->
+                    @include('profile.company.partials.applicants')
                     <!--list pendaftar-->
 
                     <!-- JARAK BAWAH -->

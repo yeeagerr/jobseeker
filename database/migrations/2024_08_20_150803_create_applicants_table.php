@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('applicants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("job_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("pekerjaan_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId("user_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId("company_id")->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->json('qna');
+            $table->text(column: 'resume')->nullable();
             $table->timestamps();
         });
     }

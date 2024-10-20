@@ -1,4 +1,4 @@
-<div class="mt-5 hidden peer-checked/jobs:hidden  peer-checked/review:block">
+<div class="mt-5 hidden  peer-checked/review:block">
     <p class="text-end mr-5 tracking-wider mt-10">
         Di sortir :
         <span class="font-bold">
@@ -13,7 +13,7 @@
     </h1>
     <h4 class="text-l tracking-wider mr-5 mt-5 text-[#133240]">
         Your trust is our main concern so these ratings for
-        <span class="font-bold">Google Group</span>
+        <span class="font-bold">{{$id->nama}}</span>
         are shared as-is from employees in line with our community guidelines
     </h4>
 

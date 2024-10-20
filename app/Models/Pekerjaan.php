@@ -26,4 +26,9 @@ class Pekerjaan extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function has_applicant()
+    {
+        return $this->hasMany(Applicant::class);
+    }
 }

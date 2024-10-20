@@ -1,4 +1,4 @@
-<div class="mt-5 hidden peer-checked/jobs:block peer-checked/about:hidden">
+<div class="mt-5 hidden peer-checked/jobs:block ">
     <h1 class="text-2xl font-bold tracking-wide">
         Berberapa Pekerjaan
     </h1>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Applicant;
 use App\Models\Company;
 use App\Models\Pekerjaan;
 use App\Models\Review;
