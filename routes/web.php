@@ -22,24 +22,27 @@ Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () 
 
     Route::prefix("user")->group(function () {
         Route::get("/profile/{id}", [UserController::class, 'profile'])->name('user.profile');
+        Route::delete('review/delete/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
 
         Route::middleware('UserOnly')->group(function () {
             Route::get('/edit/profile', [UserController::class, 'show_edit'])->name('profile.edit');
+
             Route::patch('/edit/profile', [UserController::class, 'update'])->name('profile.update')->middleware('PreventDuplicateSubmit');
 
             Route::post('review/create/{CompanyId}', [ReviewController::class, 'store'])->name('review.store');
+
             Route::get("interview/{id}", [InterviewController::class, "index"])->name("interview");
+
             Route::post("interview/{id}", [InterviewController::class, "index"])->name("interview");
 
             Route::post('applicant/{id}', [ApplicantController::class, 'store'])->name('applicant.store');
 
             Route::get("/job/filter", [JobController::class, "filter_jobs"])->name('filter.job');
         });
-
-        Route::delete('review/delete/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
     });
 
     Route::middleware("CompanyOnly")->group(function () {
+        Route::get("rekrut", [CompanyController::class, 'show_rekrut'])->name('rekrut');
         Route::prefix('company')->group(function () {
             Route::get("/edit/profile", [CompanyController::class, "show_edit"])->name("company.edit");
             Route::put("/edit/profile", [CompanyController::class, "update"])->name("company.update");

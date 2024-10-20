@@ -11,7 +11,7 @@
         @if (Auth::guard('company')->check())
         <a href="{{route('home')}}" class="font-[500] tracking-wider whitespace-nowrap {{request()->is('/') ? "
             border-b-2" : "" }} border-[#2D9CDB]">Home</a>
-        <a href="{{route('company')}}"
+        <a href="{{route('rekrut')}}"
             class="font-[500] hover:border-b border-[rgb(45,156,219)] tracking-wider whitespace-nowrap {{request()->is('company/recruite*') ? "
             border-b-2" : "" }}">Rekrut</a>
         <a href="{{route('company.profile', Auth::guard('company')->user()->id)}}"

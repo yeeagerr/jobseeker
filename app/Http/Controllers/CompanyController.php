@@ -6,6 +6,7 @@ use App\Models\Applicant;
 use App\Models\Company;
 use App\Models\Pekerjaan;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -125,5 +126,11 @@ class CompanyController extends Controller
         $company->update($validate);
         // return redirect()->route('company.edit')->with("success", "Your company profile successfully updated");
         return redirect()->route('company.profile', $company->id)->with("success", "Your company profile successfully updated");
+    }
+
+    public function show_rekrut()
+    {
+        $pelamar = User::all();
+        return view('recruit.index', compact('pelamar'));
     }
 }
