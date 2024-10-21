@@ -20,7 +20,7 @@ class IsYourJob
         $id = $request->route('id');
         $user = Auth::guard('company')->user();
 
-        $job = Pekerjaan::where('id', $id->id)
+        $job = Pekerjaan::where('id', $id->id ?? $id)
             ->where('company_id', $user->id)
             ->first();
         if (!isset($job)) {

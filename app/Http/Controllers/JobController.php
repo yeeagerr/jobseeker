@@ -11,13 +11,18 @@ class JobController extends Controller
 {
     public function index(Request $request)
     {
-
+        if (Auth::guard('company')->check()) {
+            return redirect()->route('home');
+        }
         $jobs = Pekerjaan::all();
         return view('jobs.index', compact(var_name: 'jobs'));
     }
 
     public function filter_jobs(Request $request)
     {
+        if (Auth::guard('company')->check()) {
+            return redirect()->route('home');
+        }
         $query = Pekerjaan::with('company');
 
         if (count($request->jam) > 1 or count($request->tingkat) > 1 or count($request->tipe) > 1) {
