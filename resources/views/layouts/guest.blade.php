@@ -28,5 +28,6 @@
     </div>
 
 </body>
+<script src="{{asset('/resources/js/preventDefault.js')}}"></script>
 
 </html>

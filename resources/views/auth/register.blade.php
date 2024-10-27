@@ -1,8 +1,10 @@
 <x-guest-layout>
+
     <div class="border flex justify-end h-[100vh] ">
         <img src="./images/wave Group.png" class="h-full mt-[-80px]" draggable="false" alt="wave" />
         <div class="absolute w-full h-full top-0 flex justify-center items-center">
-            <form class="bg-[#4567D6] w-[80%] rounded-xl px-10 py-10" method="POST" action="{{ route('register') }}">
+            <form class="bg-[#4567D6] w-[80%] rounded-xl px-10 py-10" method="POST" action="{{ route('register') }}"
+                onsubmit="disableSubmitButton(this)">
                 @csrf
                 <div class="flex justify-center items-center text-white">
                     <i class="fa-solid fa-user text-xl p-3 bg-black rounded-full ml-[-50px] mr-[20px]"></i>

@@ -4,10 +4,12 @@
             Kandidat Pekerja
         </h1>
         <div>
+            @if (Auth::guard("company")->check())
             <button onclick="window.location.href='{{route('interview.edit')}}'"
                 class="bg-indigo-600 text-white font-semibold py-3 px-6 rounded-full shadow-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Edit petanyaan interview
             </button>
+            @endif
 
             <button class="bg-[white] font-bold border-2 px-6 ml-3 p-2 text-[gray]">
                 Filter

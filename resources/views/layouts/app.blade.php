@@ -85,5 +85,7 @@
 @if (request()->is('job'))
 <script src="{{asset('/resources/js/filter.js')}}"></script>
 @endif
+<script src="{{asset('/resources/js/preventDefault.js')}}"></script>
+
 
 </html>

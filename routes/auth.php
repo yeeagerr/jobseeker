@@ -27,7 +27,7 @@ Route::middleware('guest-only')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::post('register', [RegisteredUserController::class, 'store'])->middleware('PreventDuplicateSubmit');
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
@@ -43,7 +43,7 @@ Route::middleware('guest-only')->group(function () {
 
     Route::prefix('company')->group(function () {
         Route::get('register', [CompanyAuthContoller::class, 'show_register'])->name('company.register');
-        Route::post('register', [CompanyAuthContoller::class, 'create'])->name('company.create');
+        Route::post('register', [CompanyAuthContoller::class, 'create'])->name('company.create')->middleware('PreventDuplicateSubmit');
     });
 });
 

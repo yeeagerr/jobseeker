@@ -106,7 +106,7 @@
 
         <!-- DROP DOWN -->
         <div
-            class="absolute left-0 h-0 overflow-hidden top-[90px] flex peer-checked:py-5 peer-checked:h-[200px] transition-all gap-3 justify-center bg-white peer-checked:border-t-2 items-center flex-col w-full z-10">
+            class="absolute left-0 h-0 overflow-hidden top-[90px] flex peer-checked:py-5 peer-checked:h-[250px] transition-all gap-3 justify-center bg-white peer-checked:border-t-2 items-center flex-col w-full z-10">
             <a href="{{route('home')}}"
                 class="text-xl font-[600] tracking-wide pb-1 border-[#2D9CDB] {{request()->is('/') ? " border-b-2" : ""
                 }}">Home</a>
@@ -119,6 +119,15 @@
             @if(Auth::guard('company')->check() OR Auth::check())
             <a href="{{Auth::check() ? route('user.profile', Auth::user()->id) : route('company.profile', Auth::guard('company')->user()->id)}}"
                 class="text-xl font-[600] tracking-wide pb-1">My Profile</a>
+
+            <form action="{{route('logout')}}" method="POST">
+                @csrf
+                <button type="submit"> <i
+                        class="fa-solid fa-right-from-bracket text-xl px-2 cursor-pointer   text-black"></i>
+                    Logout
+                </button>
+            </form>
+
             @else
             <a href="{{route('login')}}" class="text-xl font-[600] tracking-wide pb-1">Login</a>
             @endif

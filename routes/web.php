@@ -47,11 +47,11 @@ Route::middleware(["UserCompany", "isVerified", "no-cache"])->group(function () 
 
         Route::prefix('job')->group(function () {
             Route::get("/create", [JobController::class, "job"])->name('company.job');
-            Route::post("/create", [JobController::class, "store"])->name('company.job_store')->middleware('PreventDuplicateSubmit');;
+            Route::post("/create", [JobController::class, "store"])->name('company.job_store')->middleware('PreventDuplicateSubmit');
 
             Route::middleware('IsYourJob')->group(function () {
-                Route::delete("/delete/{id}", [JobController::class, "destroy"])->name('job.destroy')->middleware('PreventDuplicateSubmit');;
-                Route::put("/edit/{id}", [JobController::class, 'update'])->name("job.update")->middleware('PreventDuplicateSubmit');;
+                Route::delete("/delete/{id}", [JobController::class, "destroy"])->name('job.destroy')->middleware('PreventDuplicateSubmit');
+                Route::put("/edit/{id}", [JobController::class, 'update'])->name("job.update")->middleware('PreventDuplicateSubmit');
                 Route::get("/edit/{id}", [JobController::class, 'show_edit'])->name("job.edit");
             });
         });
