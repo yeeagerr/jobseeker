@@ -14,7 +14,7 @@
 
     <div class="mt-6 flex justify-center ">
         <div class="w-[90%]">
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center flex-wrap">
                 <div>
                     <div class="w-[80px] h-[80px]">
                         <img src="{{$id->logo ?? null ? asset('./company.logo/' . $id->logo ) : "
@@ -35,7 +35,7 @@
                 </div>
 
                 @if (Auth::guard('company')->check() AND Auth::guard('company')->user()->id == $id->id)
-                <div id="switchBtn">
+                <div id="switchBtn" class="mt-3">
                     <button onclick="window.location.href = '{{route('company.edit')}}'"
                         class="bg-indigo-600 text-white font-semibold py-3 px-6 rounded-full shadow-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Edit Profile Perusahaan
@@ -68,19 +68,23 @@
                             Reviews
                         </p>
                     </label>
+                    @if (Auth::guard("company")->check())
                     <label for="pelamar">
                         <p
                             class="font-bold text-lg md:text-2xl tracking-wide w-[90px] md:w-[150px] cursor-pointer whitespace-nowrap">
                             list pendaftar
                         </p>
                     </label>
+                    @endif
                 </div>
                 <div class="relative bg-[#5070D8] w-full h-[3px] rouded-full my-2">
                     <input type="radio" name="radioTipe" id="about" checked class="peer/about hidden" />
                     <input type="radio" name="radioTipe" id="jobs" class="peer/jobs hidden" />
                     <input type="radio" name="radioTipe" id="review" class="peer/review hidden" />
                     <input type="radio" name="radioTipe" id="list" class="peer/list hidden" />
+                    @if (Auth::guard("company")->check())
                     <input type="radio" name="radioTipe" id="pelamar" class="peer/pelamar hidden" />
+                    @endif
 
                     <div
                         class="absolute h-[10px] w-[65px] rounded-2xl bg-[#22336A] top-[-4px] transform peer-checked/about:translate-x-[0px] peer-checked/jobs:translate-x-[85px] md:peer-checked/jobs:translate-x-[145px] peer-checked/review:translate-x-[180px] md:peer-checked/review:translate-x-[315px] peer-checked/pelamar:translate-x-[485px] transition">
@@ -102,7 +106,10 @@
                     <!--review-->
 
                     <!--list pendaftar-->
+                    @if (Auth::guard("company")->check())
                     @include('profile.company.partials.applicants')
+                    @endif
+
                     <!--list pendaftar-->
 
                     <!-- JARAK BAWAH -->

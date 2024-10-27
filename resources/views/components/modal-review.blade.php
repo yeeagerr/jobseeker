@@ -4,8 +4,9 @@
     Kirim Ulasan
 </label>
 <div
-    class="w-full h-[100vh] left-0 peer-checked:flex fixed hidden bg-black bg-opacity-50 justify-center items-center top-0 z-[10]">
-    <div class="bg-white p-3 w-[90%] md:w-[600px] rounded-xl flex flex-col items-center">
+    class="w-full h-full min-h-screen overflow-y-auto fixed left-0 top-0 hidden peer-checked:flex bg-black bg-opacity-50 justify-center items-center z-[10]">
+    <div
+        class="bg-white p-3  w-[90%]  max-h-[95vh] overflow-x-hidden overflow-y-auto rounded-xl flex flex-col items-center ">
         <div class="w-full mb-2 mx-3">
             <label for="modalShow" class="cursor-pointer">
                 <h1 class="text-2xl">X</h1>
@@ -13,7 +14,7 @@
         </div>
         <form action="{{route('review.store', $id->id)}}" class="w-full" method="POST">
             @csrf
-            <div class="flex gap-3 justify-between">
+            <div class="flex gap-3 flex-wrap justify-between">
                 <div class="flex-[200px]">
                     <label for="nama"><strong>Name</strong></label>
                     <div class="border rounded-3xl h-[55px] flex justify-between items-center px-4">
@@ -63,7 +64,7 @@
         });
             </script>
 
-            <textarea name="message" cols="10" rows="10" class="mt-5 border w-full rounded-3xl p-4" required></textarea>
+            <textarea name="message" cols="10" rows="10" class="mt-3 border w-full rounded-3xl p-4" required></textarea>
             <x-input-error :messages="$errors->get('')" class="mt-2" />
 
             <div class="flex items-center gap-2">
